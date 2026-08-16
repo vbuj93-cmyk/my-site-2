@@ -1,0 +1,2444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khadkeshwara Farms and Foods Pvt. Ltd. — Feed Plan</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌾</text></svg>">
+<style>
+/* ==========================================================================
+   Feed Plan — design tokens
+   ========================================================================== */
+:root {
+  color-scheme: light;
+  --surface-1:      #fcfcfb;
+  --surface-2:      #ffffff;
+  --page-plane:     #f9f9f7;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --gridline:       #e1e0d9;
+  --baseline:       #c3c2b7;
+  --border-hairline: rgba(11,11,11,0.10);
+
+  --series-1: #2a78d6; /* blue */
+  --series-2: #eb6834; /* orange */
+  --series-3: #1baf7a; /* aqua */
+  --series-4: #eda100; /* yellow */
+
+  --seq-100: #cde2fb;
+  --seq-250: #86b6ef;
+  --seq-400: #3987e5;
+  --seq-450: #2a78d6;
+  --seq-600: #184f95;
+
+  --status-good:     #0ca30c;
+  --status-warning:  #fab219;
+  --status-serious:  #ec835a;
+  --status-critical: #d03b3b;
+  --status-good-bg:     rgba(12,163,12,0.12);
+  --status-warning-bg:  rgba(250,178,25,0.16);
+  --status-serious-bg:  rgba(236,131,90,0.14);
+  --status-critical-bg: rgba(208,59,59,0.12);
+  --status-neutral:     #6b6a65;
+  --status-neutral-bg:  rgba(107,106,101,0.12);
+  --status-warning-text: #8a5a00;
+  --status-serious-text: #a13f16;
+
+  --success-text: #006300;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-card: 0 1px 2px rgba(11,11,11,0.06), 0 1px 1px rgba(11,11,11,0.04);
+  --shadow-modal: 0 20px 60px rgba(11,11,11,0.28), 0 2px 8px rgba(11,11,11,0.12);
+  --sidebar-w: 248px;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-1:      #1a1a19;
+  --surface-2:      #212120;
+  --page-plane:     #0d0d0d;
+  --text-primary:   #ffffff;
+  --text-secondary: #c3c2b7;
+  --text-muted:     #898781;
+  --gridline:       #2c2c2a;
+  --baseline:       #383835;
+  --border-hairline: rgba(255,255,255,0.10);
+
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+
+  --seq-100: #184f95;
+  --seq-250: #1c5cab;
+  --seq-400: #3987e5;
+  --seq-450: #5598e7;
+  --seq-600: #9ec5f4;
+
+  --status-good:     #0ca30c;
+  --status-warning:  #fab219;
+  --status-serious:  #ec835a;
+  --status-critical: #e66767;
+  --status-good-bg:     rgba(12,163,12,0.18);
+  --status-warning-bg:  rgba(250,178,25,0.18);
+  --status-serious-bg:  rgba(236,131,90,0.18);
+  --status-critical-bg: rgba(230,103,103,0.18);
+  --status-neutral:     #a5a49e;
+  --status-neutral-bg:  rgba(165,164,158,0.16);
+  --status-warning-text: #ffd77a;
+  --status-serious-text: #f5b090;
+
+  --success-text: #0ca30c;
+  --shadow-card: 0 1px 2px rgba(0,0,0,0.4), 0 1px 1px rgba(0,0,0,0.3);
+  --shadow-modal: 0 20px 60px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface-1:      #1a1a19;
+    --surface-2:      #212120;
+    --page-plane:     #0d0d0d;
+    --text-primary:   #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted:     #898781;
+    --gridline:       #2c2c2a;
+    --baseline:       #383835;
+    --border-hairline: rgba(255,255,255,0.10);
+
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+
+    --seq-100: #184f95;
+    --seq-250: #1c5cab;
+    --seq-400: #3987e5;
+    --seq-450: #5598e7;
+    --seq-600: #9ec5f4;
+
+    --status-good-bg:     rgba(12,163,12,0.18);
+    --status-warning-bg:  rgba(250,178,25,0.18);
+    --status-serious-bg:  rgba(236,131,90,0.18);
+    --status-critical:    #e66767;
+    --status-critical-bg: rgba(230,103,103,0.18);
+    --status-neutral:     #a5a49e;
+    --status-neutral-bg:  rgba(165,164,158,0.16);
+    --status-warning-text: #ffd77a;
+    --status-serious-text: #f5b090;
+
+    --success-text: #0ca30c;
+    --shadow-card: 0 1px 2px rgba(0,0,0,0.4), 0 1px 1px rgba(0,0,0,0.3);
+    --shadow-modal: 0 20px 60px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.4);
+  }
+}
+
+/* ==========================================================================
+   Reset & base
+   ========================================================================== */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--page-plane);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+button { font-family: inherit; }
+h1, h2, h3, h4 { margin: 0; font-weight: 600; }
+p { margin: 0; }
+table { border-collapse: collapse; width: 100%; }
+::selection { background: var(--seq-100); }
+
+/* ==========================================================================
+   Shell layout
+   ========================================================================== */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  background: var(--surface-1);
+  border-right: 1px solid var(--border-hairline);
+  display: flex;
+  flex-direction: column;
+  padding: 18px 14px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.brand { display: flex; align-items: center; gap: 10px; padding: 6px 8px 18px; }
+.brand-mark { font-size: 26px; line-height: 1; }
+.brand-title { font-size: 15px; font-weight: 700; letter-spacing: 0.2px; }
+.brand-subtitle { font-size: 11.5px; color: var(--text-muted); }
+
+.nav { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.nav-section { display: flex; flex-direction: column; gap: 2px; }
+.nav-group-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 14px 10px 4px;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  font-weight: 500;
+}
+.nav-link:hover { background: var(--surface-2); color: var(--text-primary); }
+.nav-link.active { background: var(--seq-100); color: var(--seq-600); font-weight: 700; }
+.nav-icon { font-size: 14px; width: 18px; text-align: center; }
+
+.sidebar-footer { display: flex; flex-direction: column; gap: 6px; padding-top: 10px; border-top: 1px solid var(--border-hairline); margin-top: 10px; }
+.ghost-btn {
+  display: flex; align-items: center; gap: 8px;
+  background: transparent; border: 1px solid transparent; color: var(--text-secondary);
+  padding: 8px 10px; border-radius: var(--radius-sm); font-size: 12.5px; cursor: pointer; text-align: left;
+}
+.ghost-btn:hover { background: var(--surface-2); border-color: var(--border-hairline); color: var(--text-primary); }
+.storage-note { font-size: 10.5px; color: var(--text-muted); padding: 6px 10px 2px; line-height: 1.4; }
+
+.user-chip { padding: 8px 10px 2px; }
+.user-chip-name { font-size: 13px; font-weight: 700; color: var(--text-primary); }
+.user-chip-role { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+
+/* ==========================================================================
+   Login screen
+   ========================================================================== */
+.login-screen {
+  position: fixed; inset: 0; z-index: 200; display: none;
+  align-items: center; justify-content: center; background: var(--page-plane); padding: 20px;
+}
+.login-card {
+  width: 100%; max-width: 380px; background: var(--surface-1); border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-modal); padding: 28px 26px;
+}
+.login-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+.login-brand .brand-mark { font-size: 30px; }
+.login-company { font-size: 14.5px; font-weight: 700; line-height: 1.3; }
+#loginForm .field { margin-bottom: 14px; }
+.login-submit { width: 100%; justify-content: center; padding: 10px; margin-top: 4px; }
+.login-error { font-size: 12.5px; color: var(--status-critical); min-height: 16px; margin: -4px 0 4px; }
+.login-note { font-size: 11px; color: var(--text-muted); line-height: 1.5; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border-hairline); }
+
+.main { flex: 1; min-width: 0; }
+.topbar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 28px;
+  position: sticky; top: 0; z-index: 5;
+  background: color-mix(in srgb, var(--page-plane) 88%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border-hairline);
+}
+.page-title { font-size: 19px; flex: 1; }
+.topbar-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.icon-btn {
+  background: var(--surface-2); border: 1px solid var(--border-hairline);
+  width: 32px; height: 32px; border-radius: var(--radius-sm);
+  cursor: pointer; color: var(--text-secondary); font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+#mobileNavBtn { display: none; }
+
+.page-content { padding: 20px 28px 48px; max-width: 1280px; }
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: var(--radius-sm);
+  font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid transparent;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--series-1); color: #fff; }
+.btn-primary:hover { background: var(--seq-600); }
+.btn-secondary { background: var(--surface-2); color: var(--text-primary); border-color: var(--border-hairline); }
+.btn-secondary:hover { background: var(--gridline); }
+.btn-danger { background: transparent; color: var(--status-critical); border-color: var(--status-critical); }
+.btn-danger:hover { background: var(--status-critical-bg); }
+.btn-sm { padding: 5px 9px; font-size: 12px; border-radius: 6px; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.link-btn { background: none; border: none; color: var(--series-1); cursor: pointer; font-size: 12.5px; font-weight: 600; padding: 4px 6px; }
+.file-btn { position: relative; text-align: center; }
+.stack-btns { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+
+/* ==========================================================================
+   KPI tiles
+   ========================================================================== */
+.kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 18px; }
+.kpi-tile {
+  background: var(--surface-1); border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg); padding: 14px 16px; box-shadow: var(--shadow-card);
+}
+.kpi-label { font-size: 12px; color: var(--text-secondary); font-weight: 500; }
+.kpi-value { font-size: 26px; font-weight: 700; margin-top: 4px; letter-spacing: -0.3px; }
+.kpi-sub { font-size: 11.5px; color: var(--text-muted); margin-top: 3px; }
+.kpi-delta-up { color: var(--success-text); }
+.kpi-delta-down { color: var(--status-critical); }
+
+/* ==========================================================================
+   Cards / panels
+   ========================================================================== */
+.card {
+  background: var(--surface-1); border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-card);
+  padding: 16px 18px; margin-bottom: 16px;
+}
+.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; gap: 10px; flex-wrap: wrap; }
+.card-title { font-size: 14.5px; font-weight: 700; }
+.card-subtitle { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.grid-2 { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; }
+@media (max-width: 980px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   Filters / toolbar
+   ========================================================================== */
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+.search-input, .select-input, .text-input, textarea, input[type=date], input[type=time], input[type=number], input[type=text], input[type=email], input[type=url] {
+  background: var(--surface-2); border: 1px solid var(--border-hairline); color: var(--text-primary);
+  border-radius: var(--radius-sm); padding: 8px 10px; font-size: 13px; font-family: inherit;
+}
+.search-input { min-width: 220px; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--series-1); outline-offset: 1px; }
+.toolbar-spacer { flex: 1; }
+.pill-filter {
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px 11px; border-radius: 999px;
+  font-size: 12px; font-weight: 600; border: 1px solid var(--border-hairline); background: var(--surface-2);
+  color: var(--text-secondary); cursor: pointer;
+}
+.pill-filter.active { background: var(--seq-100); border-color: var(--series-1); color: var(--seq-600); }
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+.table-scroll { overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--border-hairline); }
+.data-table { font-size: 13px; min-width: 640px; }
+.data-table thead th {
+  text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px;
+  color: var(--text-muted); font-weight: 700; padding: 10px 12px; background: var(--surface-1);
+  border-bottom: 1px solid var(--gridline); position: sticky; top: 0; white-space: nowrap;
+}
+.data-table tbody td { padding: 10px 12px; border-bottom: 1px solid var(--gridline); color: var(--text-secondary); white-space: nowrap; }
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover { background: var(--surface-2); }
+.data-table td.primary-cell { color: var(--text-primary); font-weight: 600; }
+.data-table .num-cell { font-variant-numeric: tabular-nums; text-align: right; }
+.row-actions { display: flex; gap: 6px; }
+.empty-row td { text-align: center; padding: 34px 12px; color: var(--text-muted); }
+
+/* ==========================================================================
+   Badges
+   ========================================================================== */
+.badge {
+  display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 999px;
+  font-size: 11.5px; font-weight: 700; white-space: nowrap;
+}
+.badge-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.badge-good { background: var(--status-good-bg); color: var(--success-text); }
+.badge-good .badge-dot { background: var(--status-good); }
+.badge-warning { background: var(--status-warning-bg); color: var(--status-warning-text); }
+.badge-warning .badge-dot { background: var(--status-warning); }
+.badge-serious { background: var(--status-serious-bg); color: var(--status-serious-text); }
+.badge-serious .badge-dot { background: var(--status-serious); }
+.badge-critical { background: var(--status-critical-bg); color: var(--status-critical); }
+.badge-critical .badge-dot { background: var(--status-critical); }
+.badge-neutral { background: var(--status-neutral-bg); color: var(--status-neutral); }
+.badge-neutral .badge-dot { background: var(--status-neutral); }
+
+/* ==========================================================================
+   Modal
+   ========================================================================== */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(11,11,11,0.45); backdrop-filter: blur(2px);
+  display: none; align-items: flex-start; justify-content: center; padding: 5vh 16px; z-index: 50; overflow-y: auto;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--surface-1); border-radius: var(--radius-lg); box-shadow: var(--shadow-modal);
+  width: 100%; max-width: 640px; border: 1px solid var(--border-hairline);
+}
+.modal-narrow { max-width: 440px; }
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border-hairline); }
+.modal-header h2 { font-size: 16px; }
+.modal-body { padding: 20px; max-height: 76vh; overflow-y: auto; }
+.muted-text { color: var(--text-secondary); font-size: 13px; line-height: 1.5; }
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 14px; }
+.form-grid .full { grid-column: 1 / -1; }
+@media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } }
+.field label { display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 5px; }
+.field input, .field select, .field textarea { width: 100%; }
+.field textarea { resize: vertical; min-height: 60px; }
+.field-hint { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+.field-error { font-size: 11px; color: var(--status-critical); margin-top: 4px; display: none; }
+.field.invalid input, .field.invalid select, .field.invalid textarea { border-color: var(--status-critical); }
+.field.invalid .field-error { display: block; }
+.form-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border-hairline); }
+.form-section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-muted); margin: 4px 0 2px; grid-column: 1/-1; }
+.readonly-box { background: var(--page-plane); border: 1px dashed var(--border-hairline); border-radius: var(--radius-sm); padding: 10px 12px; font-size: 12.5px; color: var(--text-secondary); }
+.readonly-box strong { color: var(--text-primary); }
+
+/* ==========================================================================
+   Charts
+   ========================================================================== */
+.chart-wrap { width: 100%; }
+.legend-row { display: flex; flex-wrap: wrap; gap: 12px 18px; margin-top: 12px; }
+.legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--text-secondary); }
+.legend-swatch { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+.bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.bar-row:last-child { margin-bottom: 0; }
+.bar-label { width: 108px; flex-shrink: 0; font-size: 12px; color: var(--text-secondary); text-align: right; }
+.bar-track { flex: 1; background: var(--gridline); border-radius: 4px; height: 18px; position: relative; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; }
+.bar-value { font-size: 12px; font-weight: 700; color: var(--text-primary); margin-left: 8px; font-variant-numeric: tabular-nums; width: 64px; flex-shrink: 0; }
+
+.meter { margin-bottom: 14px; }
+.meter:last-child { margin-bottom: 0; }
+.meter-head { display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 5px; }
+.meter-head .name { font-weight: 600; color: var(--text-primary); }
+.meter-head .pct { color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+.meter-track { height: 10px; border-radius: 5px; background: var(--seq-100); overflow: hidden; }
+.meter-fill { height: 100%; border-radius: 5px; background: var(--seq-400); }
+.meter-fill.over { background: var(--status-critical); }
+.meter-sub { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+.stackbar { display: flex; width: 100%; height: 26px; border-radius: 6px; overflow: hidden; background: var(--gridline); }
+.stackbar-seg { height: 100%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; }
+.stackbar-seg + .stackbar-seg { margin-left: 2px; }
+
+.empty-chart { color: var(--text-muted); font-size: 12.5px; padding: 20px 0; text-align: center; }
+
+/* ==========================================================================
+   Detail / view panel
+   ========================================================================== */
+.detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 20px; }
+.detail-item .k { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; }
+.detail-item .v { font-size: 13.5px; color: var(--text-primary); font-weight: 600; margin-top: 2px; }
+.divider { height: 1px; background: var(--border-hairline); margin: 14px 0; }
+.subtable-title { font-size: 12.5px; font-weight: 700; margin-bottom: 8px; }
+
+/* ==========================================================================
+   Toast
+   ========================================================================== */
+.toast {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--text-primary); color: var(--surface-1); padding: 10px 18px; border-radius: 999px;
+  font-size: 13px; font-weight: 600; box-shadow: var(--shadow-modal); opacity: 0; pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease; z-index: 100;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 880px) {
+  .sidebar { position: fixed; left: 0; top: 0; z-index: 40; transform: translateX(-100%); transition: transform .2s ease; box-shadow: var(--shadow-modal); }
+  .sidebar.open { transform: translateX(0); }
+  #mobileNavBtn { display: flex; }
+  .page-content { padding: 16px 14px 40px; }
+  .topbar { padding: 14px 16px; }
+  .bar-label { width: 78px; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <div class="login-brand">
+      <span class="brand-mark">🌾</span>
+      <div>
+        <div class="login-company">Khadkeshwara Farms and Foods Pvt. Ltd.</div>
+        <div class="brand-subtitle">Feed Plan — Mill Operations</div>
+      </div>
+    </div>
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="loginUsername">Username</label>
+        <input id="loginUsername" name="username" type="text" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" name="password" type="password" autocomplete="current-password" required>
+      </div>
+      <div class="login-error" id="loginError"></div>
+      <button type="submit" class="btn btn-primary login-submit">Log in</button>
+    </form>
+    <p class="login-note">This is a login gate for keeping day-to-day work organized by role — it is not secure storage. Anyone with access to this browser's files can still view the underlying data.</p>
+  </div>
+</div>
+
+<div class="app-shell" id="appShell">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-mark">🌾</span>
+      <div class="brand-text">
+        <div class="brand-title">Khadkeshwara Farms</div>
+        <div class="brand-subtitle">Feed Plan — Mill Operations</div>
+      </div>
+    </div>
+
+    <nav class="nav" id="nav">
+      <a href="#dashboard" data-route="dashboard" class="nav-link" data-roles="Admin,Supervisor">
+        <span class="nav-icon" aria-hidden="true">▦</span><span>Dashboard</span>
+      </a>
+
+      <div class="nav-section" data-roles="Admin">
+        <div class="nav-group-label">Masters</div>
+        <a href="#farmers" data-route="farmers" class="nav-link" data-roles="Admin">
+          <span class="nav-icon" aria-hidden="true">👤</span><span>Farmers</span>
+        </a>
+        <a href="#supervisors" data-route="supervisors" class="nav-link" data-roles="Admin">
+          <span class="nav-icon" aria-hidden="true">🧑‍💼</span><span>Supervisors</span>
+        </a>
+        <a href="#mills" data-route="mills" class="nav-link" data-roles="Admin">
+          <span class="nav-icon" aria-hidden="true">🏭</span><span>Mills / Plants</span>
+        </a>
+        <a href="#branches" data-route="branches" class="nav-link" data-roles="Admin">
+          <span class="nav-icon" aria-hidden="true">📍</span><span>Branches</span>
+        </a>
+      </div>
+
+      <div class="nav-section" data-roles="Admin,Supervisor">
+        <div class="nav-group-label">Operations</div>
+        <a href="#indents" data-route="indents" class="nav-link" data-roles="Admin,Supervisor">
+          <span class="nav-icon" aria-hidden="true">📋</span><span>Indents</span>
+        </a>
+        <a href="#dispatches" data-route="dispatches" class="nav-link" data-roles="Admin,Supervisor">
+          <span class="nav-icon" aria-hidden="true">🚚</span><span>Dispatches</span>
+        </a>
+        <a href="#sms" data-route="sms" class="nav-link" data-roles="Admin">
+          <span class="nav-icon" aria-hidden="true">💬</span><span>SMS Logs</span>
+        </a>
+      </div>
+
+      <div class="nav-section" data-roles="Admin">
+        <div class="nav-group-label">Admin</div>
+        <a href="#users" data-route="users" class="nav-link" data-roles="Admin">
+          <span class="nav-icon" aria-hidden="true">🔑</span><span>Users</span>
+        </a>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-chip" id="userChip">
+        <div class="user-chip-name" id="userChipName">—</div>
+        <div class="user-chip-role" id="userChipRole">—</div>
+      </div>
+      <button id="logoutBtn" class="ghost-btn" type="button" title="Log out">
+        <span aria-hidden="true">⎋</span><span>Log out</span>
+      </button>
+      <button id="themeToggle" class="ghost-btn" type="button" title="Toggle light / dark theme">
+        <span id="themeIcon" aria-hidden="true">🌙</span><span id="themeLabel">Dark mode</span>
+      </button>
+      <div data-roles="Admin">
+        <button id="dataMenuBtn" class="ghost-btn" type="button" title="Backup, restore or reset data">
+          <span aria-hidden="true">⚙</span><span>Data &amp; backup</span>
+        </button>
+      </div>
+      <div class="storage-note">Data is stored only in this browser (localStorage). Use Export to back it up.</div>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="topbar">
+      <button class="icon-btn" id="mobileNavBtn" type="button" aria-label="Toggle navigation">☰</button>
+      <h1 class="page-title" id="pageTitle">Dashboard</h1>
+      <div class="topbar-actions" id="topbarActions"></div>
+    </header>
+
+    <div class="page-content" id="pageContent"></div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <h2 id="modalTitle">Title</h2>
+      <button class="icon-btn" id="modalClose" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="dataModalOverlay">
+  <div class="modal modal-narrow" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <h2>Data &amp; backup</h2>
+      <button class="icon-btn" id="dataModalClose" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="muted-text">This app keeps all data in your browser's local storage — nothing is sent anywhere. Export a backup regularly, especially before clearing browser data.</p>
+      <div class="stack-btns">
+        <button class="btn btn-primary" id="exportBtn" type="button">⬇ Export data (JSON)</button>
+        <label class="btn btn-secondary file-btn">
+          ⬆ Import data (JSON)
+          <input type="file" id="importInput" accept="application/json" hidden>
+        </label>
+        <button class="btn btn-secondary" id="reseedBtn" type="button">↻ Reload sample data</button>
+        <button class="btn btn-danger" id="wipeBtn" type="button">🗑 Erase all data</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+
+/* ==========================================================================
+   Constants
+   ========================================================================== */
+var STORAGE_KEY = 'feedPlanDB_v3';
+var SESSION_KEY = 'feedPlanSession';
+var THEME_KEY = 'feedPlanTheme';
+var BAG_TO_TON = 0.05; // standard 50kg bag
+var FEED_TYPES = ['Pre-Starter', 'Starter', 'Grower', 'Finisher', 'Layer Mash'];
+var URGENCIES = ['Low', 'Medium', 'High'];
+var SMS_STATUSES = ['Delivered', 'Sent', 'Failed'];
+var FARMER_CSV_COLUMNS = ['Name', 'Branch', 'Phone', 'Address', 'Capacity', 'Active Batch No'];
+var FARMER_CSV_ALIASES = {
+  name: ['name', 'farmername'],
+  branch: ['branch'],
+  phone: ['phone', 'phonenumber', 'mobile', 'contact'],
+  address: ['address'],
+  capacity: ['capacity', 'capacitybirds', 'birdcapacity'],
+  activeBatchNo: ['activebatchno', 'activebatchnumber', 'batchno']
+};
+
+/* Safe Storage wrapper for sandboxed Wix / cross-origin iframes */
+var _memStore = {};
+var safeStorage = {
+  getItem: function (k) {
+    try { return window.localStorage.getItem(k); } catch (e) { return _memStore[k] || null; }
+  },
+  setItem: function (k, v) {
+    try { window.localStorage.setItem(k, v); } catch (e) { _memStore[k] = String(v); }
+  },
+  removeItem: function (k) {
+    try { window.localStorage.removeItem(k); } catch (e) { delete _memStore[k]; }
+  }
+};
+
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+function $(sel, root) { return (root || document).querySelector(sel); }
+function $all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function fmtNum(n, decimals) {
+  n = Number(n) || 0;
+  return n.toLocaleString('en-IN', { minimumFractionDigits: decimals || 0, maximumFractionDigits: decimals || 0 });
+}
+
+function fmtDate(iso) {
+  if (!iso) return '—';
+  var d = new Date(iso + 'T00:00:00');
+  if (isNaN(d)) return iso;
+  return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+
+function fmtDateTime(iso) {
+  if (!iso) return '—';
+  var d = new Date(iso);
+  if (isNaN(d)) return iso;
+  return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) + ', ' +
+    d.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+}
+
+function todayISO() {
+  var d = new Date();
+  return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+}
+function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+function nowHHMM() {
+  var d = new Date();
+  return pad2(d.getHours()) + ':' + pad2(d.getMinutes());
+}
+function nowISO() { return new Date().toISOString(); }
+
+function toast(msg) {
+  var el = $('#toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(function () { el.classList.remove('show'); }, 2400);
+}
+
+function downloadTextFile(content, filename, mime) {
+  var blob = new Blob([content], { type: mime });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function csvEscape(v) {
+  v = String(v === undefined || v === null ? '' : v);
+  if (/[",\n]/.test(v)) return '"' + v.replace(/"/g, '""') + '"';
+  return v;
+}
+
+function normHeader(h) { return String(h || '').trim().toLowerCase().replace(/[^a-z0-9]/g, ''); }
+
+function parseCsv(text) {
+  var rows = [];
+  var row = [];
+  var field = '';
+  var inQuotes = false;
+  text = String(text || '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  for (var i = 0; i < text.length; i++) {
+    var c = text[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (text[i + 1] === '"') { field += '"'; i++; }
+        else inQuotes = false;
+      } else field += c;
+    } else {
+      if (c === '"') inQuotes = true;
+      else if (c === ',') { row.push(field); field = ''; }
+      else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+      else field += c;
+    }
+  }
+  if (field.length || row.length) { row.push(field); rows.push(row); }
+  return rows.filter(function (r) { return !(r.length === 1 && r[0].trim() === ''); });
+}
+
+/* ==========================================================================
+   Seed data
+   ========================================================================== */
+function buildSeedData() {
+  var db = {
+    branches: [
+      { id: 'BR-001', name: 'Kolar' },
+      { id: 'BR-002', name: 'Nelmangala' }
+    ],
+    farmers: [
+      { id: 'FRM-001', name: 'Ramesh Yadav', branch: 'Kolar', phone: '+91 98222 00011', address: 'Village Khairpur, Kolar', capacity: 20000, activeBatchNo: 'B-2026-014' },
+      { id: 'FRM-002', name: 'Suresh Chauhan', branch: 'Kolar', phone: '+91 98222 00022', address: 'Village Rampur, Kolar', capacity: 15000, activeBatchNo: 'B-2026-021' },
+      { id: 'FRM-003', name: 'Lakshmi Devi', branch: 'Nelmangala', phone: '+91 98222 00033', address: 'Village Anandpur, Nelmangala', capacity: 25000, activeBatchNo: 'B-2026-009' },
+      { id: 'FRM-004', name: 'Prakash Gowda', branch: 'Nelmangala', phone: '+91 98222 00044', address: 'Village Srirampet, Nelmangala', capacity: 18000, activeBatchNo: 'B-2026-017' },
+      { id: 'FRM-005', name: 'Manoj Tiwari', branch: 'Nelmangala', phone: '+91 98222 00055', address: 'Village Devgaon, Nelmangala', capacity: 12000, activeBatchNo: 'B-2026-005' },
+      { id: 'FRM-006', name: 'Geeta Sharma', branch: 'Nelmangala', phone: '+91 98222 00066', address: 'Village Bhagwanpur, Nelmangala', capacity: 22000, activeBatchNo: 'B-2026-012' }
+    ],
+    supervisors: [
+      { id: 'SUP-001', name: 'Vikram Singh', branch: 'Kolar', email: 'vikram.singh@feedplan.com', phone: '+91 98111 00011' },
+      { id: 'SUP-002', name: 'Meena Joshi', branch: 'Nelmangala', email: 'meena.joshi@feedplan.com', phone: '+91 98111 00022' },
+      { id: 'SUP-003', name: 'Arjun Nair', branch: 'Nelmangala', email: 'arjun.nair@feedplan.com', phone: '+91 98111 00033' },
+      { id: 'SUP-004', name: 'Kavita Reddy', branch: 'Kolar', email: 'kavita.reddy@feedplan.com', phone: '+91 98111 00044' }
+    ],
+    mills: [
+      { id: 'MILL-001', name: 'Unit 1 - Main Plant', location: 'Industrial Area, Sector 5', inchargeName: 'Ramesh Kumar', contact: '+91 98000 11122', dailyCapacityTons: 40 },
+      { id: 'MILL-002', name: 'Unit 2 - North Plant', location: 'MIDC, North Zone', inchargeName: 'Suresh Patil', contact: '+91 98000 22233', dailyCapacityTons: 30 },
+      { id: 'MILL-003', name: 'Unit 3 - South Plant', location: 'Industrial Estate, South Zone', inchargeName: 'Anita Rao', contact: '+91 98000 33344', dailyCapacityTons: 25 }
+    ],
+    indents: [
+      { id: 'IND-0001', indentDate: '2026-08-05', requiredDate: '2026-08-07', farmerId: 'FRM-001', farmerName: 'Ramesh Yadav', branch: 'Kolar', batchNo: 'B-2026-014', birdCount: 20000, feedType: 'Grower', bagCount: 100, quantityTons: 5.0, assignedPlantId: 'MILL-001', assignedPlantName: 'Unit 1 - Main Plant', supervisorId: 'SUP-001', supervisorName: 'Vikram Singh', supervisorPhone: '+91 98111 00011', supervisorEmail: 'vikram.singh@feedplan.com', status: 'Fulfilled', urgency: 'Medium', notes: '', createdAt: '2026-08-05T09:12:00' },
+      { id: 'IND-0002', indentDate: '2026-08-09', requiredDate: '2026-08-11', farmerId: 'FRM-003', farmerName: 'Lakshmi Devi', branch: 'Nelmangala', batchNo: 'B-2026-009', birdCount: 25000, feedType: 'Layer Mash', bagCount: 150, quantityTons: 7.5, assignedPlantId: 'MILL-003', assignedPlantName: 'Unit 3 - South Plant', supervisorId: 'SUP-002', supervisorName: 'Meena Joshi', supervisorPhone: '+91 98111 00022', supervisorEmail: 'meena.joshi@feedplan.com', status: 'Partial', urgency: 'High', notes: 'Farmer requested split delivery.', createdAt: '2026-08-09T10:05:00' },
+      { id: 'IND-0003', indentDate: '2026-08-12', requiredDate: '2026-08-15', farmerId: 'FRM-005', farmerName: 'Manoj Tiwari', branch: 'Nelmangala', batchNo: 'B-2026-005', birdCount: 12000, feedType: 'Starter', bagCount: 60, quantityTons: 3.0, assignedPlantId: 'MILL-002', assignedPlantName: 'Unit 2 - North Plant', supervisorId: 'SUP-003', supervisorName: 'Arjun Nair', supervisorPhone: '+91 98111 00033', supervisorEmail: 'arjun.nair@feedplan.com', status: 'Pending', urgency: 'Low', notes: '', createdAt: '2026-08-12T08:40:00' },
+      { id: 'IND-0004', indentDate: '2026-08-13', requiredDate: '2026-08-14', farmerId: 'FRM-002', farmerName: 'Suresh Chauhan', branch: 'Kolar', batchNo: 'B-2026-021', birdCount: 15000, feedType: 'Finisher', bagCount: 80, quantityTons: 4.0, assignedPlantId: 'MILL-001', assignedPlantName: 'Unit 1 - Main Plant', supervisorId: 'SUP-004', supervisorName: 'Kavita Reddy', supervisorPhone: '+91 98111 00044', supervisorEmail: 'kavita.reddy@feedplan.com', status: 'Pending', urgency: 'High', notes: 'Urgent — birds due for finisher switch.', createdAt: '2026-08-13T07:55:00' },
+      { id: 'IND-0005', indentDate: '2026-08-06', requiredDate: '2026-08-08', farmerId: 'FRM-004', farmerName: 'Prakash Gowda', branch: 'Nelmangala', batchNo: 'B-2026-017', birdCount: 18000, feedType: 'Grower', bagCount: 90, quantityTons: 4.5, assignedPlantId: 'MILL-003', assignedPlantName: 'Unit 3 - South Plant', supervisorId: 'SUP-002', supervisorName: 'Meena Joshi', supervisorPhone: '+91 98111 00022', supervisorEmail: 'meena.joshi@feedplan.com', status: 'Cancelled', urgency: 'Medium', notes: 'Farmer postponed batch placement.', createdAt: '2026-08-06T11:20:00' },
+      { id: 'IND-0006', indentDate: '2026-08-02', requiredDate: '2026-08-04', farmerId: 'FRM-006', farmerName: 'Geeta Sharma', branch: 'Nelmangala', batchNo: 'B-2026-012', birdCount: 22000, feedType: 'Pre-Starter', bagCount: 40, quantityTons: 2.0, assignedPlantId: 'MILL-002', assignedPlantName: 'Unit 2 - North Plant', supervisorId: 'SUP-003', supervisorName: 'Arjun Nair', supervisorPhone: '+91 98111 00033', supervisorEmail: 'arjun.nair@feedplan.com', status: 'Fulfilled', urgency: 'Medium', notes: '', createdAt: '2026-08-02T09:00:00' },
+      { id: 'IND-0007', indentDate: '2026-08-11', requiredDate: '2026-08-13', farmerId: 'FRM-001', farmerName: 'Ramesh Yadav', branch: 'Kolar', batchNo: 'B-2026-014', birdCount: 20000, feedType: 'Layer Mash', bagCount: 120, quantityTons: 6.0, assignedPlantId: 'MILL-001', assignedPlantName: 'Unit 1 - Main Plant', supervisorId: 'SUP-001', supervisorName: 'Vikram Singh', supervisorPhone: '+91 98111 00011', supervisorEmail: 'vikram.singh@feedplan.com', status: 'Partial', urgency: 'Medium', notes: '', createdAt: '2026-08-11T08:15:00' }
+    ],
+    dispatches: [
+      { id: 'DSP-0001', indentId: 'IND-0001', dispatchDate: '2026-08-07', dispatchTime: '10:30', farmerName: 'Ramesh Yadav', branch: 'Kolar', feedType: 'Grower', orderedBags: 100, dispatchedBags: 100, dispatchedTons: 5.0, vehicleNumber: 'MH-12-AB-3344', driverName: 'Baban Kale', driverContact: '+91 90111 22334', dcInvoiceNo: 'DC-10021', plantName: 'Unit 1 - Main Plant', supervisorEmail: 'vikram.singh@feedplan.com', smsStatus: 'Delivered', emailStatus: 'Sent', gatePassFileUrl: '', remarks: 'Full quantity delivered on schedule.' },
+      { id: 'DSP-0002', indentId: 'IND-0002', dispatchDate: '2026-08-11', dispatchTime: '14:15', farmerName: 'Lakshmi Devi', branch: 'Nelmangala', feedType: 'Layer Mash', orderedBags: 150, dispatchedBags: 90, dispatchedTons: 4.5, vehicleNumber: 'KA-05-CD-7788', driverName: 'Shivappa Hegde', driverContact: '+91 90111 22335', dcInvoiceNo: 'DC-10022', plantName: 'Unit 3 - South Plant', supervisorEmail: 'meena.joshi@feedplan.com', smsStatus: 'Delivered', emailStatus: 'Sent', gatePassFileUrl: '', remarks: 'First split — balance 60 bags to follow.' },
+      { id: 'DSP-0003', indentId: 'IND-0006', dispatchDate: '2026-08-04', dispatchTime: '09:45', farmerName: 'Geeta Sharma', branch: 'Nelmangala', feedType: 'Pre-Starter', orderedBags: 40, dispatchedBags: 40, dispatchedTons: 2.0, vehicleNumber: 'MH-14-EF-1029', driverName: 'Dilip More', driverContact: '+91 90111 22336', dcInvoiceNo: 'DC-10023', plantName: 'Unit 2 - North Plant', supervisorEmail: 'arjun.nair@feedplan.com', smsStatus: 'Delivered', emailStatus: 'Sent', gatePassFileUrl: '', remarks: '' },
+      { id: 'DSP-0004', indentId: 'IND-0007', dispatchDate: '2026-08-13', dispatchTime: '11:00', farmerName: 'Ramesh Yadav', branch: 'Kolar', feedType: 'Layer Mash', orderedBags: 120, dispatchedBags: 70, dispatchedTons: 3.5, vehicleNumber: 'MH-12-AB-3344', driverName: 'Baban Kale', driverContact: '+91 90111 22334', dcInvoiceNo: 'DC-10024', plantName: 'Unit 1 - Main Plant', supervisorEmail: 'vikram.singh@feedplan.com', smsStatus: 'Sent', emailStatus: 'Sent', gatePassFileUrl: '', remarks: 'Balance 50 bags scheduled next trip.' }
+    ],
+    smsLogs: [],
+    users: [
+      { id: 'USR-001', name: 'Admin', username: 'admin', password: 'admin123', role: 'Admin', linkedSupervisorId: '', canCreateIndents: true, canLogDispatches: true, active: true },
+      { id: 'USR-002', name: 'Vikram Singh', username: 'vikram', password: 'feed@123', role: 'Supervisor', linkedSupervisorId: 'SUP-001', canCreateIndents: true, canLogDispatches: true, active: true },
+      { id: 'USR-003', name: 'Meena Joshi', username: 'meena', password: 'feed@123', role: 'Supervisor', linkedSupervisorId: 'SUP-002', canCreateIndents: true, canLogDispatches: true, active: true },
+      { id: 'USR-004', name: 'Arjun Nair', username: 'arjun', password: 'feed@123', role: 'Supervisor', linkedSupervisorId: 'SUP-003', canCreateIndents: true, canLogDispatches: true, active: true },
+      { id: 'USR-005', name: 'Kavita Reddy', username: 'kavita', password: 'feed@123', role: 'Supervisor', linkedSupervisorId: 'SUP-004', canCreateIndents: true, canLogDispatches: true, active: true }
+    ],
+    counters: { branch: 2, farmer: 6, supervisor: 4, mill: 3, indent: 7, dispatch: 4, sms: 0, user: 5 }
+  };
+
+  db.dispatches.forEach(function (d) {
+    var sup = db.indents.filter(function (i) { return i.id === d.indentId; })[0];
+    var supName = sup ? sup.supervisorName : '';
+    logSmsFor(db, d, 'Farmer', d.farmerName, guessFarmerPhone(db, d.farmerName));
+    logSmsFor(db, d, 'Supervisor', supName, guessSupervisorPhone(db, supName));
+  });
+
+  return db;
+}
+
+function guessFarmerPhone(db, name) {
+  var f = db.farmers.filter(function (x) { return x.name === name; })[0];
+  return f ? f.phone : '';
+}
+function guessSupervisorPhone(db, name) {
+  var s = db.supervisors.filter(function (x) { return x.name === name; })[0];
+  return s ? s.phone : '';
+}
+function logSmsFor(db, dispatch, role, name, phone) {
+  db.counters.sms += 1;
+  var msg = role === 'Farmer'
+    ? 'Dear ' + name + ', ' + dispatch.dispatchedBags + ' bags (' + dispatch.dispatchedTons + ' tons) of ' + dispatch.feedType + ' feed dispatched via ' + dispatch.vehicleNumber + '. DC No: ' + dispatch.dcInvoiceNo + '. - Feed Plan'
+    : 'Dispatch confirmed: ' + dispatch.dispatchedBags + ' bags ' + dispatch.feedType + ' to ' + dispatch.farmerName + ' (' + dispatch.branch + ') via ' + dispatch.vehicleNumber + '. DC No: ' + dispatch.dcInvoiceNo + '.';
+  db.smsLogs.push({
+    id: 'SMS-' + String(db.counters.sms).padStart(4, '0'),
+    timestamp: dispatch.dispatchDate + 'T' + dispatch.dispatchTime + ':00',
+    recipientRole: role,
+    recipientName: name || '—',
+    mobileNumber: phone || '—',
+    messageText: msg,
+    status: dispatch.smsStatus,
+    gatewayResponse: dispatch.smsStatus === 'Failed' ? 'ERR-TIMEOUT' : 'MOCK200-OK'
+  });
+}
+
+/* ==========================================================================
+   Store
+   ========================================================================== */
+var DB = null;
+var CURRENT_USER = null;
+
+function loadDB() {
+  var raw = safeStorage.getItem(STORAGE_KEY);
+  if (raw) {
+    try { DB = JSON.parse(raw); return; } catch (e) { /* fall through to reseed */ }
+  }
+  DB = buildSeedData();
+  saveDB();
+}
+function saveDB() { safeStorage.setItem(STORAGE_KEY, JSON.stringify(DB)); }
+function nextId(prefix, counterKey, pad) {
+  DB.counters[counterKey] += 1;
+  return prefix + '-' + String(DB.counters[counterKey]).padStart(pad, '0');
+}
+
+function findMill(id) { return DB.mills.filter(function (m) { return m.id === id; })[0]; }
+function findFarmer(id) { return DB.farmers.filter(function (f) { return f.id === id; })[0]; }
+function findSupervisor(id) { return DB.supervisors.filter(function (s) { return s.id === id; })[0]; }
+function findIndent(id) { return DB.indents.filter(function (i) { return i.id === id; })[0]; }
+function findBranch(id) { return DB.branches.filter(function (b) { return b.id === id; })[0]; }
+function findUser(id) { return DB.users.filter(function (u) { return u.id === id; })[0]; }
+function branchNames() { return DB.branches.map(function (b) { return b.name; }); }
+
+function dispatchesForIndent(indentId) {
+  return DB.dispatches.filter(function (d) { return d.indentId === indentId; });
+}
+function dispatchedBagsForIndent(indentId) {
+  return dispatchesForIndent(indentId).reduce(function (sum, d) { return sum + Number(d.dispatchedBags || 0); }, 0);
+}
+function recalcIndentStatus(indentId) {
+  var indent = findIndent(indentId);
+  if (!indent || indent.status === 'Cancelled') return;
+  var done = dispatchedBagsForIndent(indentId);
+  if (done <= 0) indent.status = 'Pending';
+  else if (done < indent.bagCount) indent.status = 'Partial';
+  else indent.status = 'Fulfilled';
+}
+
+/* ==========================================================================
+   Auth & visibility scoping
+   ========================================================================== */
+function isAdmin() { return !!CURRENT_USER && CURRENT_USER.role === 'Admin'; }
+function currentSupervisorId() { return CURRENT_USER ? CURRENT_USER.linkedSupervisorId : null; }
+function canCreateIndents() { return isAdmin() || !!(CURRENT_USER && CURRENT_USER.canCreateIndents); }
+function canLogDispatches() { return isAdmin() || !!(CURRENT_USER && CURRENT_USER.canLogDispatches); }
+
+function visibleIndents() {
+  if (isAdmin()) return DB.indents;
+  var supId = currentSupervisorId();
+  return DB.indents.filter(function (i) { return i.supervisorId === supId; });
+}
+function visibleDispatches() {
+  if (isAdmin()) return DB.dispatches;
+  var ownIds = {};
+  visibleIndents().forEach(function (i) { ownIds[i.id] = true; });
+  return DB.dispatches.filter(function (d) { return ownIds[d.indentId]; });
+}
+
+function login(username, password) {
+  var uname = (username || '').trim().toLowerCase();
+  var user = DB.users.filter(function (u) {
+    return u.active && u.username.toLowerCase() === uname && u.password === password;
+  })[0];
+  if (!user) return false;
+  CURRENT_USER = user;
+  safeStorage.setItem(SESSION_KEY, JSON.stringify({ userId: user.id }));
+  return true;
+}
+function logout() {
+  CURRENT_USER = null;
+  safeStorage.removeItem(SESSION_KEY);
+}
+function restoreSession() {
+  var raw = safeStorage.getItem(SESSION_KEY);
+  if (!raw) return false;
+  try {
+    var session = JSON.parse(raw);
+    var user = findUser(session.userId);
+    if (!user || !user.active) return false;
+    CURRENT_USER = user;
+    return true;
+  } catch (e) { return false; }
+}
+
+/* ==========================================================================
+   Router
+   ========================================================================== */
+var ROUTES = {
+  dashboard: { title: 'Dashboard', render: renderDashboard, roles: ['Admin', 'Supervisor'] },
+  farmers: { title: 'Farmers', render: renderFarmers, roles: ['Admin'] },
+  supervisors: { title: 'Supervisors', render: renderSupervisors, roles: ['Admin'] },
+  mills: { title: 'Mills / Plants', render: renderMills, roles: ['Admin'] },
+  branches: { title: 'Branches', render: renderBranches, roles: ['Admin'] },
+  indents: { title: 'Indents', render: renderIndents, roles: ['Admin', 'Supervisor'] },
+  dispatches: { title: 'Dispatches', render: renderDispatches, roles: ['Admin', 'Supervisor'] },
+  sms: { title: 'SMS Logs', render: renderSms, roles: ['Admin'] },
+  users: { title: 'Users', render: renderUsers, roles: ['Admin'] }
+};
+
+var STATE = {
+  route: 'dashboard',
+  filters: {
+    farmers: { q: '', branch: '' },
+    supervisors: { q: '', branch: '' },
+    mills: { q: '' },
+    branches: { q: '' },
+    indents: { q: '', status: 'All', branch: '' },
+    dispatches: { q: '', branch: '', plant: '' },
+    sms: { q: '', status: 'All' },
+    users: { q: '' }
+  }
+};
+
+function applyRoleVisibility() {
+  var role = CURRENT_USER ? CURRENT_USER.role : null;
+  $all('[data-roles]').forEach(function (el) {
+    var roles = el.dataset.roles.split(',');
+    el.style.display = (role && roles.indexOf(role) !== -1) ? '' : 'none';
+  });
+}
+
+function navigate() {
+  var hash = (location.hash || '#dashboard').replace('#', '');
+  var route = ROUTES[hash];
+  var role = CURRENT_USER ? CURRENT_USER.role : null;
+  if (!route || !role || route.roles.indexOf(role) === -1) {
+    hash = 'dashboard';
+    route = ROUTES.dashboard;
+    if (location.hash.replace('#', '') !== 'dashboard') location.hash = '#dashboard';
+  }
+  STATE.route = hash;
+  $all('.nav-link').forEach(function (a) { a.classList.toggle('active', a.dataset.route === hash); });
+  $('#pageTitle').textContent = route.title;
+  $('#sidebar').classList.remove('open');
+  route.render();
+}
+window.addEventListener('hashchange', navigate);
+
+/* ==========================================================================
+   Small render helpers
+   ========================================================================== */
+function statusBadge(status) {
+  var map = {
+    Fulfilled: 'good', Partial: 'warning', Pending: 'neutral', Cancelled: 'critical',
+    Delivered: 'good', Sent: 'neutral', Failed: 'critical', 'Not Sent': 'neutral',
+    Active: 'good', Inactive: 'neutral'
+  };
+  var cls = map[status] || 'neutral';
+  return '<span class="badge badge-' + cls + '"><span class="badge-dot"></span>' + escapeHtml(status) + '</span>';
+}
+function urgencyBadge(u) {
+  var map = { Low: 'good', Medium: 'warning', High: 'critical' };
+  return '<span class="badge badge-' + (map[u] || 'neutral') + '"><span class="badge-dot"></span>' + escapeHtml(u) + '</span>';
+}
+function branchOptions(selected) {
+  return branchNames().map(function (b) { return '<option value="' + escapeHtml(b) + '"' + (b === selected ? ' selected' : '') + '>' + escapeHtml(b) + '</option>'; }).join('');
+}
+function emptyRow(colspan, text) {
+  return '<tr class="empty-row"><td colspan="' + colspan + '">' + escapeHtml(text) + '</td></tr>';
+}
+
+/* ==========================================================================
+   Dashboard
+   ========================================================================== */
+function renderDashboard() {
+  if (isAdmin()) renderAdminDashboard(); else renderSupervisorDashboard();
+}
+
+function renderAdminDashboard() {
+  $('#topbarActions').innerHTML = '';
+  var openIndents = DB.indents.filter(function (i) { return i.status === 'Pending' || i.status === 'Partial'; });
+  var totalTonsDispatched = DB.dispatches.reduce(function (s, d) { return s + Number(d.dispatchedTons || 0); }, 0);
+  var totalBagsDispatched = DB.dispatches.reduce(function (s, d) { return s + Number(d.dispatchedBags || 0); }, 0);
+  var deliveredSms = DB.smsLogs.filter(function (l) { return l.status === 'Delivered'; }).length;
+  var smsRate = DB.smsLogs.length ? Math.round((deliveredSms / DB.smsLogs.length) * 100) : 0;
+
+  var kpis = [
+    { label: 'Farmers registered', value: DB.farmers.length, sub: DB.supervisors.length + ' supervisors · ' + DB.mills.length + ' plants' },
+    { label: 'Open indents', value: openIndents.length, sub: DB.indents.filter(function (i) { return i.urgency === 'High' && (i.status === 'Pending' || i.status === 'Partial'); }).length + ' marked high urgency' },
+    { label: 'Bags dispatched (all-time)', value: fmtNum(totalBagsDispatched), sub: fmtNum(totalTonsDispatched, 1) + ' tons total' },
+    { label: 'Dispatches logged', value: DB.dispatches.length, sub: 'across ' + DB.mills.length + ' plants' },
+    { label: 'SMS delivery rate', value: smsRate + '%', sub: DB.smsLogs.length + ' messages sent' }
+  ];
+
+  var html = '';
+  html += '<div class="kpi-row">' + kpis.map(function (k) {
+    return '<div class="kpi-tile"><div class="kpi-label">' + k.label + '</div><div class="kpi-value">' + k.value + '</div><div class="kpi-sub">' + k.sub + '</div></div>';
+  }).join('') + '</div>';
+
+  html += '<div class="grid-2">';
+  html += '<div class="card">' +
+    '<div class="card-header"><div><div class="card-title">Indent status breakdown</div><div class="card-subtitle">' + DB.indents.length + ' indents total</div></div></div>' +
+    buildIndentStatusChart(DB.indents) +
+    '</div>';
+  html += '<div class="card">' +
+    '<div class="card-header"><div><div class="card-title">Today\'s plant utilization</div><div class="card-subtitle">Dispatched tons today vs daily capacity</div></div></div>' +
+    buildPlantUtilization() +
+    '</div>';
+  html += '</div>';
+
+  html += '<div class="card">' +
+    '<div class="card-header"><div><div class="card-title">Tons dispatched by branch</div><div class="card-subtitle">All-time, from logged dispatches</div></div></div>' +
+    buildBranchTonsChart(DB.dispatches) +
+    '</div>';
+
+  html += '<div class="grid-2">';
+  html += '<div class="card">' +
+    '<div class="card-header"><div class="card-title">Recent dispatches</div><a href="#dispatches" class="link-btn">View all →</a></div>' +
+    buildRecentDispatchesTable(DB.dispatches) +
+    '</div>';
+  html += '<div class="card">' +
+    '<div class="card-header"><div class="card-title">Recent SMS activity</div><a href="#sms" class="link-btn">View all →</a></div>' +
+    buildRecentSmsTable() +
+    '</div>';
+  html += '</div>';
+
+  $('#pageContent').innerHTML = html;
+}
+
+function renderSupervisorDashboard() {
+  $('#topbarActions').innerHTML = '';
+  var indentsList = visibleIndents();
+  var dispatchesList = visibleDispatches();
+  var openIndents = indentsList.filter(function (i) { return i.status === 'Pending' || i.status === 'Partial'; });
+  var totalTons = dispatchesList.reduce(function (s, d) { return s + Number(d.dispatchedTons || 0); }, 0);
+  var totalBags = dispatchesList.reduce(function (s, d) { return s + Number(d.dispatchedBags || 0); }, 0);
+  var plantSet = {};
+  dispatchesList.forEach(function (d) { plantSet[d.plantName] = true; });
+
+  var kpis = [
+    { label: 'Your open indents', value: openIndents.length, sub: indentsList.filter(function (i) { return i.urgency === 'High' && (i.status === 'Pending' || i.status === 'Partial'); }).length + ' marked high urgency' },
+    { label: 'Your bags dispatched (all-time)', value: fmtNum(totalBags), sub: fmtNum(totalTons, 1) + ' tons total' },
+    { label: 'Your dispatches logged', value: dispatchesList.length, sub: 'across ' + Object.keys(plantSet).length + ' plants' }
+  ];
+
+  var html = '';
+  html += '<div class="kpi-row">' + kpis.map(function (k) {
+    return '<div class="kpi-tile"><div class="kpi-label">' + k.label + '</div><div class="kpi-value">' + k.value + '</div><div class="kpi-sub">' + k.sub + '</div></div>';
+  }).join('') + '</div>';
+
+  html += '<div class="card">' +
+    '<div class="card-header"><div><div class="card-title">Your indent status breakdown</div><div class="card-subtitle">' + indentsList.length + ' indents total</div></div></div>' +
+    buildIndentStatusChart(indentsList) +
+    '</div>';
+
+  html += '<div class="card">' +
+    '<div class="card-header"><div class="card-title">Your recent dispatches</div><a href="#dispatches" class="link-btn">View all →</a></div>' +
+    buildRecentDispatchesTable(dispatchesList) +
+    '</div>';
+
+  $('#pageContent').innerHTML = html;
+}
+
+function buildIndentStatusChart(indentsList) {
+  var order = ['Fulfilled', 'Partial', 'Pending', 'Cancelled'];
+  var colorVar = { Fulfilled: 'var(--status-good)', Partial: 'var(--status-warning)', Pending: 'var(--status-neutral)', Cancelled: 'var(--status-critical)' };
+  var total = indentsList.length;
+  if (!total) return '<div class="empty-chart">No indents yet.</div>';
+  var counts = {};
+  order.forEach(function (s) { counts[s] = 0; });
+  indentsList.forEach(function (i) { counts[i.status] = (counts[i.status] || 0) + 1; });
+
+  var segs = order.map(function (s) {
+    var pct = (counts[s] / total) * 100;
+    if (pct <= 0) return '';
+    var label = pct >= 10 ? counts[s] : '';
+    return '<div class="stackbar-seg" style="width:' + pct + '%;background:' + colorVar[s] + '" title="' + s + ': ' + counts[s] + ' (' + Math.round(pct) + '%)">' + label + '</div>';
+  }).join('');
+
+  var legend = order.map(function (s) {
+    return '<div class="legend-item"><span class="legend-swatch" style="background:' + colorVar[s] + '"></span>' + s + ' — ' + counts[s] + '</div>';
+  }).join('');
+
+  return '<div class="chart-wrap"><div class="stackbar">' + segs + '</div><div class="legend-row">' + legend + '</div></div>';
+}
+
+function buildBranchTonsChart(dispatchesList) {
+  var names = branchNames();
+  var byBranch = {};
+  names.forEach(function (b) { byBranch[b] = 0; });
+  dispatchesList.forEach(function (d) { byBranch[d.branch] = (byBranch[d.branch] || 0) + Number(d.dispatchedTons || 0); });
+  var max = Math.max.apply(null, names.map(function (b) { return byBranch[b]; }).concat([1]));
+  if (dispatchesList.length === 0) return '<div class="empty-chart">No dispatches logged yet.</div>';
+
+  var rows = names.map(function (b) {
+    var v = byBranch[b];
+    var pct = Math.max((v / max) * 100, v > 0 ? 3 : 0);
+    return '<div class="bar-row">' +
+      '<div class="bar-label">' + escapeHtml(b) + '</div>' +
+      '<div class="bar-track"><div class="bar-fill" style="width:' + pct + '%;background:var(--seq-400)" title="' + escapeHtml(b) + ': ' + fmtNum(v, 1) + ' tons"></div></div>' +
+      '<div class="bar-value">' + fmtNum(v, 1) + ' t</div>' +
+      '</div>';
+  }).join('');
+  return '<div class="chart-wrap">' + rows + '</div>';
+}
+
+function buildPlantUtilization() {
+  var today = todayISO();
+  if (!DB.mills.length) return '<div class="empty-chart">No plants configured.</div>';
+  return DB.mills.map(function (m) {
+    var tonsToday = DB.dispatches.filter(function (d) { return d.plantName === m.name && d.dispatchDate === today; })
+      .reduce(function (s, d) { return s + Number(d.dispatchedTons || 0); }, 0);
+    var cap = Number(m.dailyCapacityTons) || 1;
+    var pct = Math.min((tonsToday / cap) * 100, 100);
+    var over = tonsToday > cap;
+    return '<div class="meter">' +
+      '<div class="meter-head"><span class="name">' + escapeHtml(m.name) + '</span><span class="pct">' + Math.round((tonsToday / cap) * 100) + '%</span></div>' +
+      '<div class="meter-track"><div class="meter-fill' + (over ? ' over' : '') + '" style="width:' + pct + '%"></div></div>' +
+      '<div class="meter-sub">' + fmtNum(tonsToday, 1) + ' / ' + fmtNum(cap, 1) + ' tons today</div>' +
+      '</div>';
+  }).join('');
+}
+
+function buildRecentDispatchesTable(dispatchesList) {
+  var rows = dispatchesList.slice().sort(sortByDispatchDateDesc).slice(0, 5);
+  if (!rows.length) return '<div class="empty-chart">No dispatches yet.</div>';
+  return '<div class="table-scroll"><table class="data-table"><thead><tr><th>Dispatch</th><th>Farmer</th><th>Feed</th><th>Bags</th><th>Date</th></tr></thead><tbody>' +
+    rows.map(function (d) {
+      return '<tr><td class="primary-cell">' + d.id + '</td><td>' + escapeHtml(d.farmerName) + '</td><td>' + escapeHtml(d.feedType) + '</td><td class="num-cell">' + fmtNum(d.dispatchedBags) + '</td><td>' + fmtDate(d.dispatchDate) + '</td></tr>';
+    }).join('') + '</tbody></table></div>';
+}
+function sortByDispatchDateDesc(a, b) {
+  var da = a.dispatchDate + 'T' + (a.dispatchTime || '00:00');
+  var db2 = b.dispatchDate + 'T' + (b.dispatchTime || '00:00');
+  return da < db2 ? 1 : da > db2 ? -1 : 0;
+}
+
+function buildRecentSmsTable() {
+  var rows = DB.smsLogs.slice().sort(function (a, b) { return a.timestamp < b.timestamp ? 1 : -1; }).slice(0, 5);
+  if (!rows.length) return '<div class="empty-chart">No SMS activity yet.</div>';
+  return '<div class="table-scroll"><table class="data-table"><thead><tr><th>To</th><th>Role</th><th>Status</th><th>When</th></tr></thead><tbody>' +
+    rows.map(function (l) {
+      return '<tr><td class="primary-cell">' + escapeHtml(l.recipientName) + '</td><td>' + escapeHtml(l.recipientRole) + '</td><td>' + statusBadge(l.status) + '</td><td>' + fmtDateTime(l.timestamp) + '</td></tr>';
+    }).join('') + '</tbody></table></div>';
+}
+
+/* ==========================================================================
+   Farmers
+   ========================================================================== */
+function renderFarmers() {
+  var f = STATE.filters.farmers;
+  $('#topbarActions').innerHTML =
+    '<button class="btn btn-secondary" id="bulkUploadBtn">⬆ Bulk upload</button>' +
+    '<button class="btn btn-primary" id="addFarmerBtn">+ Add farmer</button>';
+  $('#addFarmerBtn').onclick = function () { openFarmerForm(); };
+  $('#bulkUploadBtn').onclick = function () { openFarmerBulkUpload(); };
+
+  var list = DB.farmers.filter(function (x) {
+    var matchQ = !f.q || (x.name + ' ' + x.phone + ' ' + x.address).toLowerCase().indexOf(f.q.toLowerCase()) !== -1;
+    var matchB = !f.branch || x.branch === f.branch;
+    return matchQ && matchB;
+  });
+
+  var html = '<div class="toolbar">' +
+    '<input class="search-input" type="text" placeholder="Search name, phone, address…" id="farmerSearch" value="' + escapeHtml(f.q) + '">' +
+    '<select class="select-input" id="farmerBranchFilter"><option value="">All branches</option>' + branchOptions(f.branch) + '</select>' +
+    '<div class="toolbar-spacer"></div><div class="card-subtitle">' + list.length + ' of ' + DB.farmers.length + '</div>' +
+    '</div>';
+
+  html += '<div class="table-scroll"><table class="data-table"><thead><tr>' +
+    '<th>Farmer ID</th><th>Name</th><th>Branch</th><th>Phone</th><th>Address</th><th class="num-cell">Capacity</th><th>Active batch</th><th></th>' +
+    '</tr></thead><tbody>';
+
+  if (!list.length) html += emptyRow(8, 'No farmers match your filters.');
+  else list.forEach(function (x) {
+    html += '<tr>' +
+      '<td>' + x.id + '</td>' +
+      '<td class="primary-cell">' + escapeHtml(x.name) + '</td>' +
+      '<td>' + escapeHtml(x.branch) + '</td>' +
+      '<td>' + escapeHtml(x.phone) + '</td>' +
+      '<td>' + escapeHtml(x.address) + '</td>' +
+      '<td class="num-cell">' + fmtNum(x.capacity) + '</td>' +
+      '<td>' + escapeHtml(x.activeBatchNo || '—') + '</td>' +
+      '<td class="row-actions">' +
+      '<button class="btn btn-sm btn-secondary" data-edit-farmer="' + x.id + '">Edit</button>' +
+      '<button class="btn btn-sm btn-danger" data-del-farmer="' + x.id + '">Delete</button>' +
+      '</td></tr>';
+  });
+  html += '</tbody></table></div>';
+  $('#pageContent').innerHTML = html;
+
+  $('#farmerSearch').oninput = function (e) { f.q = e.target.value; renderFarmers(); };
+  $('#farmerBranchFilter').onchange = function (e) { f.branch = e.target.value; renderFarmers(); };
+  $all('[data-edit-farmer]').forEach(function (b) { b.onclick = function () { openFarmerForm(b.dataset.editFarmer); }; });
+  $all('[data-del-farmer]').forEach(function (b) {
+    b.onclick = function () {
+      var id = b.dataset.delFarmer;
+      var used = DB.indents.some(function (i) { return i.farmerId === id; });
+      if (used && !confirm('This farmer has indents on record. Delete anyway? The farmer record will be removed but historical indents stay intact.')) return;
+      if (!used && !confirm('Delete this farmer?')) return;
+      DB.farmers = DB.farmers.filter(function (x) { return x.id !== id; });
+      saveDB(); toast('Farmer deleted'); renderFarmers();
+    };
+  });
+}
+
+function openFarmerForm(id) {
+  var isEdit = !!id;
+  var f = isEdit ? findFarmer(id) : { branch: branchNames()[0] };
+  var body =
+    '<form id="farmerForm" novalidate><div class="form-grid">' +
+    field('name', 'Name', 'text', f.name, { required: true, full: true, placeholder: 'Farmer full name' }) +
+    selectField('branch', 'Branch', branchNames(), f.branch, { required: true }) +
+    field('phone', 'Phone', 'text', f.phone, { required: true, placeholder: '+91 …' }) +
+    field('address', 'Address', 'text', f.address, { full: true, placeholder: 'Village / area, branch' }) +
+    field('capacity', 'Capacity (birds)', 'number', f.capacity, { min: 0 }) +
+    field('activeBatchNo', 'Active batch no.', 'text', f.activeBatchNo, { placeholder: 'e.g. B-2026-014' }) +
+    '</div>' +
+    '<div class="form-actions">' +
+    '<button type="button" class="btn btn-secondary" id="farmerCancel">Cancel</button>' +
+    '<button type="submit" class="btn btn-primary">' + (isEdit ? 'Save changes' : 'Add farmer') + '</button>' +
+    '</div></form>';
+
+  openModal(isEdit ? 'Edit farmer' : 'Add farmer', body);
+  $('#farmerCancel').onclick = closeModal;
+  $('#farmerForm').onsubmit = function (e) {
+    e.preventDefault();
+    var data = readForm('farmerForm');
+    if (!requireFields('farmerForm', ['name', 'branch', 'phone'])) return;
+    if (isEdit) {
+      Object.assign(f, data);
+      f.capacity = Number(data.capacity) || 0;
+    } else {
+      var rec = Object.assign({ id: nextId('FRM', 'farmer', 3) }, data);
+      rec.capacity = Number(data.capacity) || 0;
+      DB.farmers.push(rec);
+    }
+    saveDB(); closeModal(); toast(isEdit ? 'Farmer updated' : 'Farmer added'); renderFarmers();
+  };
+}
+
+function downloadFarmerTemplate() {
+  var sampleBranch = branchNames()[0] || 'Branch name';
+  var rows = [
+    FARMER_CSV_COLUMNS,
+    ['Ramesh Yadav', sampleBranch, '+91 98222 00011', 'Village Khairpur', '20000', 'B-2026-014']
+  ];
+  var csv = rows.map(function (row) { return row.map(csvEscape).join(','); }).join('\r\n');
+  downloadTextFile(csv, 'farmer_upload_template.csv', 'text/csv');
+  toast('Template downloaded');
+}
+
+function openFarmerBulkUpload() {
+  var body =
+    '<p class="muted-text">Download the template, fill in one row per farmer, then upload the completed CSV file. The Branch column must match an existing branch name exactly — check the Branches page first.</p>' +
+    '<div class="stack-btns">' +
+    '<button type="button" class="btn btn-secondary" id="downloadTemplateBtn">⬇ Download CSV template</button>' +
+    '<label class="btn btn-primary file-btn">⬆ Choose CSV file to upload<input type="file" id="bulkFileInput" accept=".csv,text/csv" hidden></label>' +
+    '</div>' +
+    '<div id="bulkPreviewArea"></div>';
+  openModal('Bulk upload farmers', body);
+  $('#downloadTemplateBtn').onclick = downloadFarmerTemplate;
+  $('#bulkFileInput').onchange = function (e) {
+    var file = e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () { renderBulkFarmerPreview(parseCsv(reader.result)); };
+    reader.readAsText(file);
+    e.target.value = '';
+  };
+}
+
+function renderBulkFarmerPreview(rows) {
+  if (!rows.length) {
+    $('#bulkPreviewArea').innerHTML = '<p class="field-error" style="display:block">That file appears to be empty.</p>';
+    return;
+  }
+  var header = rows[0].map(normHeader);
+  var colIndex = {};
+  Object.keys(FARMER_CSV_ALIASES).forEach(function (key) {
+    var idx = -1;
+    FARMER_CSV_ALIASES[key].forEach(function (alias) { if (idx === -1) idx = header.indexOf(alias); });
+    colIndex[key] = idx;
+  });
+  if (colIndex.name === -1 || colIndex.branch === -1 || colIndex.phone === -1) {
+    $('#bulkPreviewArea').innerHTML = '<p class="field-error" style="display:block">Couldn\'t find Name, Branch and Phone columns in the header row. Please use the downloaded template as-is.</p>';
+    return;
+  }
+
+  var branches = branchNames();
+  var parsed = rows.slice(1).map(function (r) {
+    var name = (r[colIndex.name] || '').trim();
+    var branch = (r[colIndex.branch] || '').trim();
+    var phone = (r[colIndex.phone] || '').trim();
+    var address = colIndex.address !== -1 ? (r[colIndex.address] || '').trim() : '';
+    var capacityRaw = colIndex.capacity !== -1 ? (r[colIndex.capacity] || '').trim() : '';
+    var activeBatchNo = colIndex.activeBatchNo !== -1 ? (r[colIndex.activeBatchNo] || '').trim() : '';
+    var capacity = capacityRaw === '' ? 0 : Number(capacityRaw);
+    var errors = [];
+    if (!name) errors.push('Name is required');
+    if (!branch) errors.push('Branch is required');
+    else if (branches.indexOf(branch) === -1) errors.push('Unknown branch "' + branch + '"');
+    if (!phone) errors.push('Phone is required');
+    if (capacityRaw !== '' && isNaN(capacity)) errors.push('Capacity must be a number');
+    return { name: name, branch: branch, phone: phone, address: address, capacity: isNaN(capacity) ? 0 : capacity, activeBatchNo: activeBatchNo, errors: errors };
+  }).filter(function (r) { return r.name || r.branch || r.phone || r.address || r.activeBatchNo; });
+
+  var validRows = parsed.filter(function (r) { return !r.errors.length; });
+
+  var html = '<div class="divider"></div><p class="muted-text"><strong>' + parsed.length + '</strong> row' + (parsed.length === 1 ? '' : 's') +
+    ' found — <strong>' + validRows.length + '</strong> ready to import' +
+    (parsed.length - validRows.length ? ', <strong>' + (parsed.length - validRows.length) + '</strong> with errors (will be skipped)' : '') + '.</p>';
+  html += '<div class="table-scroll" style="max-height:320px"><table class="data-table"><thead><tr>' +
+    '<th>#</th><th>Name</th><th>Branch</th><th>Phone</th><th>Address</th><th class="num-cell">Capacity</th><th>Batch</th><th>Status</th></tr></thead><tbody>';
+  parsed.forEach(function (r, idx) {
+    html += '<tr>' +
+      '<td>' + (idx + 1) + '</td>' +
+      '<td>' + escapeHtml(r.name) + '</td>' +
+      '<td>' + escapeHtml(r.branch) + '</td>' +
+      '<td>' + escapeHtml(r.phone) + '</td>' +
+      '<td>' + escapeHtml(r.address) + '</td>' +
+      '<td class="num-cell">' + fmtNum(r.capacity) + '</td>' +
+      '<td>' + escapeHtml(r.activeBatchNo) + '</td>' +
+      '<td>' + (r.errors.length
+        ? '<span class="badge badge-critical"><span class="badge-dot"></span>' + escapeHtml(r.errors.join('; ')) + '</span>'
+        : '<span class="badge badge-good"><span class="badge-dot"></span>Ready</span>') +
+      '</td></tr>';
+  });
+  html += '</tbody></table></div>';
+  html += '<div class="form-actions"><button type="button" class="btn btn-secondary" id="bulkCancelBtn">Cancel</button>' +
+    '<button type="button" class="btn btn-primary" id="bulkImportBtn"' + (validRows.length ? '' : ' disabled') + '>Import ' + validRows.length + ' farmer' + (validRows.length === 1 ? '' : 's') + '</button></div>';
+
+  $('#bulkPreviewArea').innerHTML = html;
+  $('#bulkCancelBtn').onclick = closeModal;
+  var importBtn = $('#bulkImportBtn');
+  if (importBtn) importBtn.onclick = function () {
+    validRows.forEach(function (r) {
+      DB.farmers.push({
+        id: nextId('FRM', 'farmer', 3),
+        name: r.name, branch: r.branch, phone: r.phone, address: r.address,
+        capacity: r.capacity, activeBatchNo: r.activeBatchNo
+      });
+    });
+    saveDB();
+    closeModal();
+    toast('Imported ' + validRows.length + ' farmer' + (validRows.length === 1 ? '' : 's'));
+    renderFarmers();
+  };
+}
+
+/* ==========================================================================
+   Supervisors
+   ========================================================================== */
+function renderSupervisors() {
+  var f = STATE.filters.supervisors;
+  $('#topbarActions').innerHTML = '<button class="btn btn-primary" id="addSupBtn">+ Add supervisor</button>';
+  $('#addSupBtn').onclick = function () { openSupervisorForm(); };
+
+  var list = DB.supervisors.filter(function (x) {
+    var matchQ = !f.q || (x.name + ' ' + x.email + ' ' + x.phone).toLowerCase().indexOf(f.q.toLowerCase()) !== -1;
+    var matchB = !f.branch || x.branch === f.branch;
+    return matchQ && matchB;
+  });
+
+  var html = '<div class="toolbar">' +
+    '<input class="search-input" type="text" placeholder="Search name, email, phone…" id="supSearch" value="' + escapeHtml(f.q) + '">' +
+    '<select class="select-input" id="supBranchFilter"><option value="">All branches</option>' + branchOptions(f.branch) + '</select>' +
+    '<div class="toolbar-spacer"></div><div class="card-subtitle">' + list.length + ' of ' + DB.supervisors.length + '</div>' +
+    '</div>';
+
+  html += '<div class="table-scroll"><table class="data-table"><thead><tr>' +
+    '<th>Supervisor ID</th><th>Name</th><th>Branch</th><th>Email</th><th>Phone</th><th></th>' +
+    '</tr></thead><tbody>';
+  if (!list.length) html += emptyRow(6, 'No supervisors match your filters.');
+  else list.forEach(function (x) {
+    html += '<tr>' +
+      '<td>' + x.id + '</td>' +
+      '<td class="primary-cell">' + escapeHtml(x.name) + '</td>' +
+      '<td>' + escapeHtml(x.branch) + '</td>' +
+      '<td>' + escapeHtml(x.email) + '</td>' +
+      '<td>' + escapeHtml(x.phone) + '</td>' +
+      '<td class="row-actions">' +
+      '<button class="btn btn-sm btn-secondary" data-edit-sup="' + x.id + '">Edit</button>' +
+      '<button class="btn btn-sm btn-danger" data-del-sup="' + x.id + '">Delete</button>' +
+      '</td></tr>';
+  });
+  html += '</tbody></table></div>';
+  $('#pageContent').innerHTML = html;
+
+  $('#supSearch').oninput = function (e) { f.q = e.target.value; renderSupervisors(); };
+  $('#supBranchFilter').onchange = function (e) { f.branch = e.target.value; renderSupervisors(); };
+  $all('[data-edit-sup]').forEach(function (b) { b.onclick = function () { openSupervisorForm(b.dataset.editSup); }; });
+  $all('[data-del-sup]').forEach(function (b) {
+    b.onclick = function () {
+      var id = b.dataset.delSup;
+      if (!confirm('Delete this supervisor?')) return;
+      DB.supervisors = DB.supervisors.filter(function (x) { return x.id !== id; });
+      saveDB(); toast('Supervisor deleted'); renderSupervisors();
+    };
+  });
+}
+
+function openSupervisorForm(id) {
+  var isEdit = !!id;
+  var s = isEdit ? findSupervisor(id) : { branch: branchNames()[0] };
+  var body =
+    '<form id="supForm" novalidate><div class="form-grid">' +
+    field('name', 'Name', 'text', s.name, { required: true, full: true }) +
+    selectField('branch', 'Branch', branchNames(), s.branch, { required: true }) +
+    field('email', 'Email', 'email', s.email, { required: true }) +
+    field('phone', 'Phone', 'text', s.phone, { required: true }) +
+    '</div>' +
+    '<div class="form-actions"><button type="button" class="btn btn-secondary" id="supCancel">Cancel</button>' +
+    '<button type="submit" class="btn btn-primary">' + (isEdit ? 'Save changes' : 'Add supervisor') + '</button></div></form>';
+
+  openModal(isEdit ? 'Edit supervisor' : 'Add supervisor', body);
+  $('#supCancel').onclick = closeModal;
+  $('#supForm').onsubmit = function (e) {
+    e.preventDefault();
+    if (!requireFields('supForm', ['name', 'branch', 'email', 'phone'])) return;
+    var data = readForm('supForm');
+    if (isEdit) Object.assign(s, data);
+    else DB.supervisors.push(Object.assign({ id: nextId('SUP', 'supervisor', 3) }, data));
+    saveDB(); closeModal(); toast(isEdit ? 'Supervisor updated' : 'Supervisor added'); renderSupervisors();
+  };
+}
+
+/* ==========================================================================
+   Mills
+   ========================================================================== */
+function renderMills() {
+  var f = STATE.filters.mills;
+  $('#topbarActions').innerHTML = '<button class="btn btn-primary" id="addMillBtn">+ Add plant</button>';
+  $('#addMillBtn').onclick = function () { openMillForm(); };
+
+  var list = DB.mills.filter(function (x) {
+    return !f.q || (x.name + ' ' + x.location + ' ' + x.inchargeName).toLowerCase().indexOf(f.q.toLowerCase()) !== -1;
+  });
+
+  var html = '<div class="toolbar">' +
+    '<input class="search-input" type="text" placeholder="Search plant, location, incharge…" id="millSearch" value="' + escapeHtml(f.q) + '">' +
+    '<div class="toolbar-spacer"></div><div class="card-subtitle">' + list.length + ' of ' + DB.mills.length + '</div></div>';
+
+  html += '<div class="table-scroll"><table class="data-table"><thead><tr>' +
+    '<th>Plant ID</th><th>Plant name</th><th>Location</th><th>Incharge</th><th>Contact</th><th class="num-cell">Daily capacity (t)</th><th></th>' +
+    '</tr></thead><tbody>';
+  if (!list.length) html += emptyRow(7, 'No plants match your search.');
+  else list.forEach(function (x) {
+    html += '<tr>' +
+      '<td>' + x.id + '</td>' +
+      '<td class="primary-cell">' + escapeHtml(x.name) + '</td>' +
+      '<td>' + escapeHtml(x.location) + '</td>' +
+      '<td>' + escapeHtml(x.inchargeName) + '</td>' +
+      '<td>' + escapeHtml(x.contact) + '</td>' +
+      '<td class="num-cell">' + fmtNum(x.dailyCapacityTons, 1) + '</td>' +
+      '<td class="row-actions">' +
+      '<button class="btn btn-sm btn-secondary" data-edit-mill="' + x.id + '">Edit</button>' +
+      '<button class="btn btn-sm btn-danger" data-del-mill="' + x.id + '">Delete</button>' +
+      '</td></tr>';
+  });
+  html += '</tbody></table></div>';
+  $('#pageContent').innerHTML = html;
+
+  $('#millSearch').oninput = function (e) { f.q = e.target.value; renderMills(); };
+  $all('[data-edit-mill]').forEach(function (b) { b.onclick = function () { openMillForm(b.dataset.editMill); }; });
+  $all('[data-del-mill]').forEach(function (b) {
+    b.onclick = function () {
+      var id = b.dataset.delMill;
+      var used = DB.indents.some(function (i) { return i.assignedPlantId === id; });
+      if (used && !confirm('This plant is referenced by existing indents. Delete anyway?')) return;
+      if (!used && !confirm('Delete this plant?')) return;
+      DB.mills = DB.mills.filter(function (x) { return x.id !== id; });
+      saveDB(); toast('Plant deleted'); renderMills();
+    };
+  });
+}
+
+function openMillForm(id) {
+  var isEdit = !!id;
+  var m = isEdit ? findMill(id) : {};
+  var body =
+    '<form id="millForm" novalidate><div class="form-grid">' +
+    field('name', 'Plant name', 'text', m.name, { required: true, full: true }) +
+    field('location', 'Location', 'text', m.location, { full: true }) +
+    field('inchargeName', 'Incharge name', 'text', m.inchargeName, {}) +
+    field('contact', 'Contact', 'text', m.contact, {}) +
+    field('dailyCapacityTons', 'Daily capacity (tons)', 'number', m.dailyCapacityTons, { min: 0, step: '0.1', required: true }) +
+    '</div>' +
+    '<div class="form-actions"><button type="button" class="btn btn-secondary" id="millCancel">Cancel</button>' +
+    '<button type="submit" class="btn btn-primary">' + (isEdit ? 'Save changes' : 'Add plant') + '</button></div></form>';
+
+  openModal(isEdit ? 'Edit plant' : 'Add plant', body);
+  $('#millCancel').onclick = closeModal;
+  $('#millForm').onsubmit = function (e) {
+    e.preventDefault();
+    if (!requireFields('millForm', ['name', 'dailyCapacityTons'])) return;
+    var data = readForm('millForm');
+    data.dailyCapacityTons = Number(data.dailyCapacityTons) || 0;
+    if (isEdit) {
+      var oldName = m.name;
+      Object.assign(m, data);
+      DB.indents.forEach(function (i) { if (i.assignedPlantId === id) i.assignedPlantName = m.name; });
+      DB.dispatches.forEach(function (d) { if (d.plantName === oldName) d.plantName = m.name; });
+    } else {
+      DB.mills.push(Object.assign({ id: nextId('MILL', 'mill', 3) }, data));
+    }
+    saveDB(); closeModal(); toast(isEdit ? 'Plant updated' : 'Plant added'); renderMills();
+  };
+}
+
+/* ==========================================================================
+   Branches
+   ========================================================================== */
+function renderBranches() {
+  var f = STATE.filters.branches;
+  $('#topbarActions').innerHTML = '<button class="btn btn-primary" id="addBranchBtn">+ Add branch</button>';
+  $('#addBranchBtn').onclick = function () { openBranchForm(); };
+
+  var list = DB.branches.filter(function (x) { return !f.q || x.name.toLowerCase().indexOf(f.q.toLowerCase()) !== -1; });
+
+  var html = '<div class="toolbar">' +
+    '<input class="search-input" type="text" placeholder="Search branch…" id="branchSearch" value="' + escapeHtml(f.q) + '">' +
+    '<div class="toolbar-spacer"></div><div class="card-subtitle">' + list.length + ' of ' + DB.branches.length + '</div></div>';
+
+  html += '<div class="table-scroll"><table class="data-table"><thead><tr>' +
+    '<th>Branch ID</th><th>Name</th><th class="num-cell">Farmers</th><th class="num-cell">Supervisors</th><th class="num-cell">Indents</th><th></th>' +
+    '</tr></thead><tbody>';
+  if (!list.length) html += emptyRow(6, 'No branches match your search.');
+  else list.forEach(function (x) {
+    var farmerCount = DB.farmers.filter(function (f2) { return f2.branch === x.name; }).length;
+    var supCount = DB.supervisors.filter(function (s) { return s.branch === x.name; }).length;
+    var indentCount = DB.indents.filter(function (i) { return i.branch === x.name; }).length;
+    html += '<tr>' +
+      '<td>' + x.id + '</td>' +
+      '<td class="primary-cell">' + escapeHtml(x.name) + '</td>' +
+      '<td class="num-cell">' + fmtNum(farmerCount) + '</td>' +
+      '<td class="num-cell">' + fmtNum(supCount) + '</td>' +
+      '<td class="num-cell">' + fmtNum(indentCount) + '</td>' +
+      '<td class="row-actions">' +
+      '<button class="btn btn-sm btn-secondary" data-edit-branch="' + x.id + '">Edit</button>' +
+      '<button class="btn btn-sm btn-danger" data-del-branch="' + x.id + '">Delete</button>' +
+      '</td></tr>';
+  });
+  html += '</tbody></table></div>';
+  $('#pageContent').innerHTML = html;
+
+  $('#branchSearch').oninput = function (e) { f.q = e.target.value; renderBranches(); };
+  $all('[data-edit-branch]').forEach(function (b) { b.onclick = function () { openBranchForm(b.dataset.editBranch); }; });
+  $all('[data-del-branch]').forEach(function (b) {
+    b.onclick = function () {
+      var id = b.dataset.delBranch;
+      var branch = findBranch(id);
+      if (!branch) return;
+      var used = DB.farmers.some(function (f2) { return f2.branch === branch.name; }) ||
+        DB.supervisors.some(function (s) { return s.branch === branch.name; }) ||
+        DB.indents.some(function (i) { return i.branch === branch.name; });
+      if (DB.branches.length <= 1) { alert('At least one branch must remain.'); return; }
+      if (used && !confirm('This branch has farmers, supervisors, or indents on record. Delete anyway? Their branch field will keep the old name as plain text.')) return;
+      if (!used && !confirm('Delete branch "' + branch.name + '"?')) return;
+      DB.branches = DB.branches.filter(function (x) { return x.id !== id; });
+      saveDB(); toast('Branch deleted'); renderBranches();
+    };
+  });
+}
+
+function openBranchForm(id) {
+  var isEdit = !!id;
+  var b = isEdit ? findBranch(id) : {};
+  var body =
+    '<form id="branchForm" novalidate><div class="form-grid">' +
+    field('name', 'Branch name', 'text', b.name, { required: true, full: true, placeholder: 'e.g. Kolar' }) +
+    '</div>' +
+    '<div class="form-actions"><button type="button" class="btn btn-secondary" id="branchCancel">Cancel</button>' +
+    '<button type="submit" class="btn btn-primary">' + (isEdit ? 'Save changes' : 'Add branch') + '</button></div></form>';
+
+  openModal(isEdit ? 'Edit branch' : 'Add branch', body);
+  $('#branchCancel').onclick = closeModal;
+  $('#branchForm').onsubmit = function (e) {
+    e.preventDefault();
+    if (!requireFields('branchForm', ['name'])) return;
+    var data = readForm('branchForm');
+    var dup = DB.branches.some(function (x) { return x.name.toLowerCase() === data.name.toLowerCase() && x.id !== id; });
+    if (dup) { alert('A branch with this name already exists.'); return; }
+    if (isEdit) {
+      var oldName = b.name;
+      b.name = data.name;
+      if (oldName !== data.name) {
+        DB.farmers.forEach(function (f2) { if (f2.branch === oldName) f2.branch = data.name; });
+        DB.supervisors.forEach(function (s) { if (s.branch === oldName) s.branch = data.name; });
+        DB.indents.forEach(function (i) { if (i.branch === oldName) i.branch = data.name; });
+        DB.dispatches.forEach(function (d) { if (d.branch === oldName) d.branch = data.name; });
+      }
+    } else {
+      DB.branches.push({ id: nextId('BR', 'branch', 3), name: data.name });
+    }
+    saveDB(); closeModal(); toast(isEdit ? 'Branch updated' : 'Branch added'); renderBranches();
+  };
+}
+
+/* ==========================================================================
+   Indents
+   ========================================================================== */
+function renderIndents() {
+  var f = STATE.filters.indents;
+  $('#topbarActions').innerHTML = canCreateIndents()
+    ? '<button class="btn btn-primary" id="addIndentBtn">+ New indent</button>' : '';
+  var addIndentBtn = $('#addIndentBtn');
+  if (addIndentBtn) addIndentBtn.onclick = function () { openIndentForm(); };
+
+  DB.indents.forEach(function (i) { recalcIndentStatus(i.id); });
+  var base = visibleIndents();
+
+  var statuses = ['All', 'Pending', 'Partial', 'Fulfilled', 'Cancelled'];
+  var list = base.filter(function (x) {
+    var matchQ = !f.q || (x.id + ' ' + x.farmerName + ' ' + x.batchNo).toLowerCase().indexOf(f.q.toLowerCase()) !== -1;
+    var matchS = f.status === 'All' || x.status === f.status;
+    var matchB = !f.branch || x.branch === f.branch;
+    return matchQ && matchS && matchB;
+  }).sort(function (a, b) { return a.indentDate < b.indentDate ? 1 : -1; });
+
+  var html = '<div class="toolbar">';
+  html += statuses.map(function (s) {
+    return '<button class="pill-filter' + (f.status === s ? ' active' : '') + '" data-status-pill="' + s + '">' + s + '</button>';
+  }).join('');
+  html += '<input class="search-input" type="text" placeholder="Search indent ID, farmer, batch…" id="indentSearch" value="' + escapeHtml(f.q) + '">';
+  html += '<select class="select-input" id="indentBranchFilter"><option value="">All branches</option>' + branchOptions(f.branch) + '</select>';
+  html += '<div class="toolbar-spacer"></div><div class="card-subtitle">' + list.length + ' of ' + base.length + '</div></div>';
+
+  html += '<div class="table-scroll"><table class="data-table"><thead><tr>' +
+    '<th>Indent</th><th>Farmer</th><th>Branch</th><th>Feed</th><th class="num-cell">Bags</th><th class="num-cell">Dispatched</th>' +
+    '<th>Plant</th><th>Required</th><th>Urgency</th><th>Status</th><th></th>' +
+    '</tr></thead><tbody>';
+
+  if (!list.length) html += emptyRow(11, 'No indents match your filters.');
+  else list.forEach(function (x) {
+    var done = dispatchedBagsForIndent(x.id);
+    html += '<tr>' +
+      '<td class="primary-cell">' + x.id + '</td>' +
+      '<td>' + escapeHtml(x.farmerName) + '</td>' +
+      '<td>' + escapeHtml(x.branch) + '</td>' +
+      '<td>' + escapeHtml(x.feedType) + '</td>' +
+      '<td class="num-cell">' + fmtNum(x.bagCount) + '</td>' +
+      '<td class="num-cell">' + fmtNum(done) + '</td>' +
+      '<td>' + escapeHtml(x.assignedPlantName) + '</td>' +
+      '<td>' + fmtDate(x.requiredDate) + '</td>' +
+      '<td>' + urgencyBadge(x.urgency) + '</td>' +
+      '<td>' + statusBadge(x.status) + '</td>' +
+      '<td class="row-actions">' +
+      '<button class="btn btn-sm btn-secondary" data-view-indent="' + x.id + '">View</button>' +
+      (canLogDispatches() && (x.status === 'Pending' || x.status === 'Partial') ? '<button class="btn btn-sm btn-primary" data-dispatch-indent="' + x.id + '">Dispatch</button>' : '') +
+      '</td></tr>';
+  });
+  html += '</tbody></table></div>';
+  $('#pageContent').innerHTML = html;
+
+  $('#indentSearch').oninput = function (e) { f.q = e.target.value; renderIndents(); };
+  $('#indentBranchFilter').onchange = function (e) { f.branch = e.target.value; renderIndents(); };
+  $all('[data-status-pill]').forEach(function (b) { b.onclick = function () { f.status = b.dataset.statusPill; renderIndents(); }; });
+  $all('[data-view-indent]').forEach(function (b) { b.onclick = function () { openIndentDetail(b.dataset.viewIndent); }; });
+  $all('[data-dispatch-indent]').forEach(function (b) { b.onclick = function () { openDispatchForm(null, b.dataset.dispatchIndent); }; });
+}
+
+function openIndentDetail(id) {
+  var i = findIndent(id);
+  if (!i) return;
+  var done = dispatchedBagsForIndent(id);
+  var remaining = Math.max(i.bagCount - done, 0);
+  var dsp = dispatchesForIndent(id).sort(sortByDispatchDateDesc);
+
+  var body = '<div class="detail-grid">' +
+    detailItem('Indent ID', i.id) + detailItem('Status', statusBadge(i.status), true) +
+    detailItem('Farmer', i.farmerName + ' (' + i.farmerId + ')') + detailItem('Branch', i.branch) +
+    detailItem('Batch no.', i.batchNo || '—') + detailItem('Bird count', fmtNum(i.birdCount)) +
+    detailItem('Feed type', i.feedType) + detailItem('Urgency', urgencyBadge(i.urgency), true) +
+    detailItem('Ordered bags', fmtNum(i.bagCount)) + detailItem('Quantity', fmtNum(i.quantityTons, 2) + ' t') +
+    detailItem('Dispatched', fmtNum(done) + ' bags') + detailItem('Remaining', fmtNum(remaining) + ' bags') +
+    detailItem('Assigned plant', i.assignedPlantName) + detailItem('Supervisor', i.supervisorName) +
+    detailItem('Indent date', fmtDate(i.indentDate)) + detailItem('Required by', fmtDate(i.requiredDate)) +
+    '</div>';
+  if (i.notes) body += '<div class="divider"></div><div class="detail-item"><div class="k">Notes</div><div class="v" style="font-weight:400">' + escapeHtml(i.notes) + '</div></div>';
+
+  body += '<div class="divider"></div><div class="subtable-title">Dispatch history (' + dsp.length + ')</div>';
+  if (!dsp.length) body += '<div class="empty-chart">No dispatches logged against this indent yet.</div>';
+  else {
+    body += '<div class="table-scroll"><table class="data-table"><thead><tr><th>Dispatch</th><th class="num-cell">Bags</th><th>Vehicle</th><th>Date</th><th>SMS</th></tr></thead><tbody>' +
+      dsp.map(function (d) {
+        return '<tr><td class="primary-cell">' + d.id + '</td><td class="num-cell">' + fmtNum(d.dispatchedBags) + '</td><td>' + escapeHtml(d.vehicleNumber) + '</td><td>' + fmtDate(d.dispatchDate) + '</td><td>' + statusBadge(d.smsStatus) + '</td></tr>';
+      }).join('') + '</tbody></table></div>';
+  }
+
+  body += '<div class="form-actions">';
+  if (canCreateIndents()) {
+    body += '<button type="button" class="btn btn-secondary" id="indentDetailEdit">Edit indent</button>';
+    if (i.status !== 'Cancelled' && i.status !== 'Fulfilled') body += '<button type="button" class="btn btn-danger" id="indentDetailCancel">Cancel indent</button>';
+  }
+  if (canLogDispatches() && (i.status === 'Pending' || i.status === 'Partial')) body += '<button type="button" class="btn btn-primary" id="indentDetailDispatch">Log dispatch</button>';
+  body += '</div>';
+
+  openModal('Indent ' + i.id, body);
+  var editBtn = $('#indentDetailEdit'); if (editBtn) editBtn.onclick = function () { openIndentForm(i.id); };
+  var cancelBtn = $('#indentDetailCancel');
+  if (cancelBtn) cancelBtn.onclick = function () {
+    if (!confirm('Cancel this indent? It will no longer accept dispatches.')) return;
+    i.status = 'Cancelled'; saveDB(); closeModal(); toast('Indent cancelled'); renderIndents();
+  };
+  var dispatchBtn = $('#indentDetailDispatch'); if (dispatchBtn) dispatchBtn.onclick = function () { openDispatchForm(null, i.id); };
+}
+function detailItem(k, v, raw) { return '<div class="detail-item"><div class="k">' + escapeHtml(k) + '</div><div class="v">' + (raw ? v : escapeHtml(v)) + '</div></div>'; }
+
+function openIndentForm(id) {
+  var isEdit = !!id;
+  var lockedSupId = isAdmin() ? null : currentSupervisorId();
+  var i = isEdit ? findIndent(id) : {
+    indentDate: todayISO(), requiredDate: todayISO(), urgency: 'Medium', feedType: FEED_TYPES[0],
+    supervisorId: lockedSupId || undefined
+  };
+  var hasDispatches = isEdit && dispatchesForIndent(id).length > 0;
+  var supervisorChoices = lockedSupId ? DB.supervisors.filter(function (s) { return s.id === lockedSupId; }) : DB.supervisors;
+
+  var body = '<form id="indentForm" novalidate><div class="form-grid">' +
+    '<div class="form-section-title">Farmer &amp; batch</div>' +
+    selectField('farmerId', 'Farmer', DB.farmers.map(function (f) { return { value: f.id, label: f.name + ' — ' + f.branch }; }), i.farmerId, { required: true, id: 'indentFarmerSel' }) +
+    field('batchNo', 'Batch no.', 'text', i.batchNo, {}) +
+    field('birdCount', 'Bird count', 'number', i.birdCount, { min: 0 }) +
+    field('indentDate', 'Indent date', 'date', i.indentDate, { required: true }) +
+    field('requiredDate', 'Required date', 'date', i.requiredDate, { required: true }) +
+
+    '<div class="form-section-title">Feed requirement</div>' +
+    selectField('feedType', 'Feed type', FEED_TYPES, i.feedType, { required: true }) +
+    field('bagCount', 'Bag count', 'number', i.bagCount, { required: true, min: 1, id: 'indentBagCount' }) +
+    field('quantityTons', 'Quantity (tons)', 'number', i.quantityTons, { step: '0.01', min: 0, id: 'indentTons' }) +
+    selectField('urgency', 'Urgency', URGENCIES, i.urgency, { required: true }) +
+
+    '<div class="form-section-title">Assignment</div>' +
+    selectField('assignedPlantId', 'Assigned plant', DB.mills.map(function (m) { return { value: m.id, label: m.name }; }), i.assignedPlantId, { required: true }) +
+    selectField('supervisorId', 'Supervisor', supervisorChoices.map(function (s) { return { value: s.id, label: s.name + ' — ' + s.branch }; }), i.supervisorId, { required: true, id: 'indentSupSel' }) +
+    (lockedSupId ? '<p class="field-hint">Indents are always raised under your own name.</p>' : '') +
+    textareaField('notes', 'Notes', i.notes, { full: true }) +
+    '</div>' +
+    (hasDispatches ? '<p class="field-hint" style="margin-top:10px">This indent already has dispatches logged — reducing the bag count below the dispatched amount is not allowed.</p>' : '') +
+    '<div class="form-actions"><button type="button" class="btn btn-secondary" id="indentCancel">Cancel</button>' +
+    '<button type="submit" class="btn btn-primary">' + (isEdit ? 'Save changes' : 'Create indent') + '</button></div></form>';
+
+  openModal(isEdit ? 'Edit indent ' + i.id : 'New indent', body);
+  $('#indentCancel').onclick = closeModal;
+  if (lockedSupId) $('#indentSupSel').disabled = true;
+
+  $('#indentBagCount').oninput = function () {
+    var bags = Number($('#indentBagCount').value) || 0;
+    $('#indentTons').value = (bags * BAG_TO_TON).toFixed(2);
+  };
+  var farmerSel = $('#indentFarmerSel');
+  if (farmerSel && !isEdit) {
+    farmerSel.onchange = function () {
+      var fm = findFarmer(farmerSel.value);
+      if (fm && fm.activeBatchNo) $('#indentForm [name="batchNo"]').value = fm.activeBatchNo;
+    };
+  }
+
+  $('#indentForm').onsubmit = function (e) {
+    e.preventDefault();
+    if (!requireFields('indentForm', ['farmerId', 'indentDate', 'requiredDate', 'feedType', 'bagCount', 'assignedPlantId', 'supervisorId', 'urgency'])) return;
+    var data = readForm('indentForm');
+    if (lockedSupId) data.supervisorId = lockedSupId;
+    var bagCount = Number(data.bagCount) || 0;
+    var alreadyDone = isEdit ? dispatchedBagsForIndent(id) : 0;
+    if (bagCount < alreadyDone) {
+      alert('Bag count cannot be less than the ' + alreadyDone + ' bags already dispatched against this indent.');
+      return;
+    }
+    var farmer = findFarmer(data.farmerId);
+    var plant = findMill(data.assignedPlantId);
+    var sup = findSupervisor(data.supervisorId);
+
+    var rec = {
+      indentDate: data.indentDate, requiredDate: data.requiredDate,
+      farmerId: data.farmerId, farmerName: farmer ? farmer.name : '', branch: farmer ? farmer.branch : '',
+      batchNo: data.batchNo, birdCount: Number(data.birdCount) || 0,
+      feedType: data.feedType, bagCount: bagCount, quantityTons: Number(data.quantityTons) || (bagCount * BAG_TO_TON),
+      assignedPlantId: data.assignedPlantId, assignedPlantName: plant ? plant.name : '',
+      supervisorId: data.supervisorId, supervisorName: sup ? sup.name : '', supervisorPhone: sup ? sup.phone : '', supervisorEmail: sup ? sup.email : '',
+      urgency: data.urgency, notes: data.notes
+    };
+
+    if (isEdit) {
+      Object.assign(i, rec);
+      recalcIndentStatus(id);
+    } else {
+      rec.id = nextId('IND', 'indent', 4);
+      rec.status = 'Pending';
+      rec.createdAt = nowISO();
+      DB.indents.push(rec);
+    }
+    saveDB(); closeModal(); toast(isEdit ? 'Indent updated' : 'Indent created'); renderIndents();
+  };
+}
+
+/* ==========================================================================
+   Dispatches
+   ========================================================================== */
+function renderDispatches() {
+  var f = STATE.filters.dispatches;
+  $('#topbarActions').innerHTML = canLogDispatches()
+    ? '<button class="btn btn-primary" id="addDispatchBtn">+ Log dispatch</button>' : '';
+  var addDispatchBtn = $('#addDispatchBtn');
+  if (addDispatchBtn) addDispatchBtn.onclick = function () { openDispatchForm(); };
+
+  var base = visibleDispatches();
+  var list = base.filter(function (x) {
+    var matchQ = !f.q || (x.id + ' ' + x.farmerName + ' ' + x.vehicleNumber + ' ' + x.dcInvoiceNo).toLowerCase().indexOf(f.q.toLowerCase()) !== -1;
+    var matchB = !f.branch || x.branch === f.branch;
+    var matchP = !f.plant || x.plantName === f.plant;
+    return matchQ && matchB && matchP;
+  }).sort(sortByDispatchDateDesc);
+
+  var plantNames = DB.mills.map(function (m) { return m.name; });
+
+  var html = '<div class="toolbar">' +
+    '<input class="search-input" type="text" placeholder="Search dispatch, farmer, vehicle, DC no…" id="dispSearch" value="' + escapeHtml(f.q) + '">' +
+    '<select class="select-input" id="dispBranchFilter"><option value="">All branches</option>' + branchOptions(f.branch) + '</select>' +
+    '<select class="select-input" id="dispPlantFilter"><option value="">All plants</option>' + plantNames.map(function (p) { return '<option value="' + escapeHtml(p) + '"' + (p === f.plant ? ' selected' : '') + '>' + escapeHtml(p) + '</option>'; }).join('') + '</select>' +
+    '<div class="toolbar-spacer"></div><div class="card-subtitle">' + list.length + ' of ' + base.length + '</div></div>';
+
+  html += '<div class="table-scroll"><table class="data-table"><thead><tr>' +
+    '<th>Dispatch</th><th>Indent</th><th>Farmer</th><th>Branch</th><th>Feed</th><th class="num-cell">Bags</th><th class="num-cell">Tons</th>' +
+    '<th>Vehicle</th><th>Plant</th><th>Date</th><th>SMS</th><th></th>' +
+    '</tr></thead><tbody>';
+  if (!list.length) html += emptyRow(12, 'No dispatches match your filters.');
+  else list.forEach(function (x) {
+    html += '<tr>' +
+      '<td class="primary-cell">' + x.id + '</td>' +
+      '<td>' + x.indentId + '</td>' +
+      '<td>' + escapeHtml(x.farmerName) + '</td>' +
+      '<td>' + escapeHtml(x.branch) + '</td>' +
+      '<td>' + escapeHtml(x.feedType) + '</td>' +
+      '<td class="num-cell">' + fmtNum(x.dispatchedBags) + '</td>' +
+      '<td class="num-cell">' + fmtNum(x.dispatchedTons, 2) + '</td>' +
+      '<td>' + escapeHtml(x.vehicleNumber) + '</td>' +
+      '<td>' + escapeHtml(x.plantName) + '</td>' +
+      '<td>' + fmtDate(x.dispatchDate) + '</td>' +
+      '<td>' + statusBadge(x.smsStatus) + '</td>' +
+      '<td class="row-actions">' +
+      '<button class="btn btn-sm btn-secondary" data-view-dispatch="' + x.id + '">View</button>' +
+      (canLogDispatches() ? '<button class="btn btn-sm btn-danger" data-del-dispatch="' + x.id + '">Delete</button>' : '') +
+      '</td></tr>';
+  });
+  html += '</tbody></table></div>';
+  $('#pageContent').innerHTML = html;
+
+  $('#dispSearch').oninput = function (e) { f.q = e.target.value; renderDispatches(); };
+  $('#dispBranchFilter').onchange = function (e) { f.branch = e.target.value; renderDispatches(); };
+  $('#dispPlantFilter').onchange = function (e) { f.plant = e.target.value; renderDispatches(); };
+  $all('[data-view-dispatch]').forEach(function (b) { b.onclick = function () { openDispatchDetail(b.dataset.viewDispatch); }; });
+  $all('[data-del-dispatch]').forEach(function (b) {
+    b.onclick = function () {
+      if (!confirm('Delete this dispatch record? The linked indent status will be recalculated.')) return;
+      var d = DB.dispatches.filter(function (x) { return x.id === b.dataset.delDispatch; })[0];
+      DB.dispatches = DB.dispatches.filter(function (x) { return x.id !== b.dataset.delDispatch; });
+      if (d) recalcIndentStatus(d.indentId);
+      saveDB(); toast('Dispatch deleted'); renderDispatches();
+    };
+  });
+}
+
+function openDispatchDetail(id) {
+  var d = DB.dispatches.filter(function (x) { return x.id === id; })[0];
+  if (!d) return;
+  var body = '<div class="detail-grid">' +
+    detailItem('Dispatch ID', d.id) + detailItem('Indent ID', d.indentId) +
+    detailItem('Farmer', d.farmerName) + detailItem('Branch', d.branch) +
+    detailItem('Feed type', d.feedType) + detailItem('Ordered bags', fmtNum(d.orderedBags)) +
+    detailItem('Dispatched bags', fmtNum(d.dispatchedBags)) + detailItem('Dispatched tons', fmtNum(d.dispatchedTons, 2)) +
+    detailItem('Vehicle no.', d.vehicleNumber) + detailItem('Driver', d.driverName + ' (' + d.driverContact + ')') +
+    detailItem('DC / invoice no.', d.dcInvoiceNo || '—') + detailItem('Plant', d.plantName) +
+    detailItem('Dispatch date', fmtDate(d.dispatchDate) + ' ' + (d.dispatchTime || '')) + detailItem('Supervisor email', d.supervisorEmail || '—') +
+    detailItem('SMS status', statusBadge(d.smsStatus), true) + detailItem('Email status', statusBadge(d.emailStatus), true) +
+    '</div>';
+  if (d.remarks) body += '<div class="divider"></div><div class="detail-item"><div class="k">Remarks</div><div class="v" style="font-weight:400">' + escapeHtml(d.remarks) + '</div></div>';
+  body += '<div class="form-actions"><button type="button" class="btn btn-secondary" id="dispDetailIndent">View indent</button></div>';
+  openModal('Dispatch ' + d.id, body);
+  $('#dispDetailIndent').onclick = function () { openIndentDetail(d.indentId); };
+}
+
+function openDispatchForm(id, prefillIndentId) {
+  var eligible = visibleIndents().filter(function (i) { return i.status === 'Pending' || i.status === 'Partial'; });
+  if (!eligible.length) {
+    openModal('Log dispatch', '<div class="empty-chart">No open indents to dispatch against. Create an indent first.</div>');
+    return;
+  }
+  var selectedId = prefillIndentId || eligible[0].id;
+  var indent = findIndent(selectedId);
+  var remaining = indent.bagCount - dispatchedBagsForIndent(indent.id);
+
+  var body = '<form id="dispForm" novalidate><div class="form-grid">' +
+    selectField('indentId', 'Indent', eligible.map(function (i) {
+      var rem = i.bagCount - dispatchedBagsForIndent(i.id);
+      return { value: i.id, label: i.id + ' — ' + i.farmerName + ' (' + rem + ' bags remaining)' };
+    }), selectedId, { required: true, full: true, id: 'dispIndentSel' }) +
+    '<div class="field full"><div class="readonly-box" id="dispIndentInfo"></div></div>' +
+    field('dispatchedBags', 'Dispatched bags', 'number', '', { required: true, min: 1, id: 'dispBags' }) +
+    field('dispatchedTons', 'Dispatched tons', 'number', '', { step: '0.01', min: 0, id: 'dispTons' }) +
+    field('dispatchDate', 'Dispatch date', 'date', todayISO(), { required: true }) +
+    field('dispatchTime', 'Dispatch time', 'time', nowHHMM(), { required: true }) +
+    field('vehicleNumber', 'Vehicle number', 'text', '', { required: true }) +
+    field('driverName', 'Driver name', 'text', '', {}) +
+    field('driverContact', 'Driver contact', 'text', '', {}) +
+    field('dcInvoiceNo', 'DC / invoice no.', 'text', '', {}) +
+    field('gatePassFileUrl', 'Gate pass file URL', 'url', '', { full: true, placeholder: 'Optional link to scanned gate pass' }) +
+    textareaField('remarks', 'Remarks', '', { full: true }) +
+    '</div>' +
+    '<div class="form-actions"><button type="button" class="btn btn-secondary" id="dispCancel">Cancel</button>' +
+    '<button type="submit" class="btn btn-primary">Log dispatch &amp; notify</button></div></form>';
+
+  openModal('Log dispatch', body);
+  $('#dispCancel').onclick = closeModal;
+
+  function refreshIndentInfo() {
+    indent = findIndent($('#dispIndentSel').value);
+    remaining = indent.bagCount - dispatchedBagsForIndent(indent.id);
+    $('#dispIndentInfo').innerHTML = '<strong>' + escapeHtml(indent.farmerName) + '</strong> · ' + escapeHtml(indent.branch) + ' · ' + escapeHtml(indent.feedType) +
+      '<br>Ordered ' + fmtNum(indent.bagCount) + ' bags · Already dispatched ' + fmtNum(dispatchedBagsForIndent(indent.id)) + ' · <strong>Remaining ' + fmtNum(remaining) + ' bags</strong>' +
+      '<br>Plant: ' + escapeHtml(indent.assignedPlantName) + ' · Supervisor: ' + escapeHtml(indent.supervisorName);
+    $('#dispBags').max = remaining;
+    $('#dispBags').value = remaining;
+    $('#dispTons').value = (remaining * BAG_TO_TON).toFixed(2);
+  }
+  refreshIndentInfo();
+  $('#dispIndentSel').onchange = refreshIndentInfo;
+  $('#dispBags').oninput = function () {
+    var b = Number($('#dispBags').value) || 0;
+    $('#dispTons').value = (b * BAG_TO_TON).toFixed(2);
+  };
+
+  $('#dispForm').onsubmit = function (e) {
+    e.preventDefault();
+    if (!requireFields('dispForm', ['indentId', 'dispatchedBags', 'dispatchDate', 'dispatchTime', 'vehicleNumber'])) return;
+    var data = readForm('dispForm');
+    var bags = Number(data.dispatchedBags) || 0;
+    indent = findIndent(data.indentId);
+    remaining = indent.bagCount - dispatchedBagsForIndent(indent.id);
+    if (bags <= 0) { alert('Dispatched bags must be greater than zero.'); return; }
+    if (bags > remaining) { alert('Only ' + remaining + ' bags remain on this indent. Reduce the quantity or create a new indent.'); return; }
+
+    var rec = {
+      id: nextId('DSP', 'dispatch', 4),
+      indentId: indent.id, dispatchDate: data.dispatchDate, dispatchTime: data.dispatchTime,
+      farmerName: indent.farmerName, branch: indent.branch, feedType: indent.feedType,
+      orderedBags: indent.bagCount, dispatchedBags: bags, dispatchedTons: Number(data.dispatchedTons) || (bags * BAG_TO_TON),
+      vehicleNumber: data.vehicleNumber, driverName: data.driverName, driverContact: data.driverContact,
+      dcInvoiceNo: data.dcInvoiceNo, plantName: indent.assignedPlantName, supervisorEmail: indent.supervisorEmail,
+      smsStatus: 'Delivered', emailStatus: indent.supervisorEmail ? 'Sent' : 'Not Sent',
+      gatePassFileUrl: data.gatePassFileUrl, remarks: data.remarks
+    };
+    DB.dispatches.push(rec);
+    recalcIndentStatus(indent.id);
+    logSmsFor(DB, rec, 'Farmer', indent.farmerName, guessFarmerPhone(DB, indent.farmerName));
+    logSmsFor(DB, rec, 'Supervisor', indent.supervisorName, indent.supervisorPhone);
+    saveDB(); closeModal(); toast('Dispatch logged — SMS notifications sent'); renderDispatches();
+  };
+}
+
+/* ==========================================================================
+   SMS logs
+   ========================================================================== */
+function renderSms() {
+  var f = STATE.filters.sms;
+  $('#topbarActions').innerHTML = '<button class="btn btn-secondary" id="testSmsBtn">+ Log manual SMS</button>';
+  $('#testSmsBtn').onclick = function () { openSmsForm(); };
+
+  var statuses = ['All'].concat(SMS_STATUSES);
+  var list = DB.smsLogs.filter(function (x) {
+    var matchQ = !f.q || (x.recipientName + ' ' + x.mobileNumber + ' ' + x.messageText).toLowerCase().indexOf(f.q.toLowerCase()) !== -1;
+    var matchS = f.status === 'All' || x.status === f.status;
+    return matchQ && matchS;
+  }).sort(function (a, b) { return a.timestamp < b.timestamp ? 1 : -1; });
+
+  var html = '<div class="toolbar">';
+  html += statuses.map(function (s) { return '<button class="pill-filter' + (f.status === s ? ' active' : '') + '" data-sms-pill="' + s + '">' + s + '</button>'; }).join('');
+  html += '<input class="search-input" type="text" placeholder="Search recipient, message…" id="smsSearch" value="' + escapeHtml(f.q) + '">';
+  html += '<div class="toolbar-spacer"></div><div class="card-subtitle">' + list.length + ' of ' + DB.smsLogs.length + '</div></div>';
+
+  html += '<div class="table-scroll"><table class="data-table"><thead><tr>' +
+    '<th>Log ID</th><th>Timestamp</th><th>Role</th><th>Recipient</th><th>Mobile</th><th>Message</th><th>Status</th><th>Gateway</th>' +
+    '</tr></thead><tbody>';
+  if (!list.length) html += emptyRow(8, 'No SMS logs match your filters.');
+  else list.forEach(function (x) {
+    html += '<tr>' +
+      '<td>' + x.id + '</td>' +
+      '<td>' + fmtDateTime(x.timestamp) + '</td>' +
+      '<td>' + escapeHtml(x.recipientRole) + '</td>' +
+      '<td class="primary-cell">' + escapeHtml(x.recipientName) + '</td>' +
+      '<td>' + escapeHtml(x.mobileNumber) + '</td>' +
+      '<td style="white-space:normal;max-width:320px">' + escapeHtml(x.messageText) + '</td>' +
+      '<td>' + statusBadge(x.status) + '</td>' +
+      '<td>' + escapeHtml(x.gatewayResponse) + '</td>' +
+      '</tr>';
+  });
+  html += '</tbody></table></div>';
+  $('#pageContent').innerHTML = html;
+
+  $('#smsSearch').oninput = function (e) { f.q = e.target.value; renderSms(); };
+  $all('[data-sms-pill]').forEach(function (b) { b.onclick = function () { f.status = b.dataset.smsPill; renderSms(); }; });
+}
+
+function openSmsForm() {
+  var body = '<form id="smsForm" novalidate><div class="form-grid">' +
+    selectField('recipientRole', 'Recipient role', ['Farmer', 'Supervisor', 'Plant Incharge'], 'Farmer', { required: true }) +
+    field('recipientName', 'Recipient name', 'text', '', { required: true }) +
+    field('mobileNumber', 'Mobile number', 'text', '', { required: true }) +
+    textareaField('messageText', 'Message', '', { full: true, required: true }) +
+    '</div><div class="form-actions"><button type="button" class="btn btn-secondary" id="smsCancel">Cancel</button>' +
+    '<button type="submit" class="btn btn-primary">Send &amp; log</button></div></form>';
+  openModal('Log manual SMS', body);
+  $('#smsCancel').onclick = closeModal;
+  $('#smsForm').onsubmit = function (e) {
+    e.preventDefault();
+    if (!requireFields('smsForm', ['recipientRole', 'recipientName', 'mobileNumber', 'messageText'])) return;
+    var data = readForm('smsForm');
+    DB.counters.sms += 1;
+    DB.smsLogs.push({
+      id: 'SMS-' + String(DB.counters.sms).padStart(4, '0'),
+      timestamp: nowISO(), recipientRole: data.recipientRole, recipientName: data.recipientName,
+      mobileNumber: data.mobileNumber, messageText: data.messageText, status: 'Delivered', gatewayResponse: 'MOCK200-OK'
+    });
+    saveDB(); closeModal(); toast('SMS logged'); renderSms();
+  };
+}
+
+/* ==========================================================================
+   Users (logins)
+   ========================================================================== */
+function renderUsers() {
+  var f = STATE.filters.users;
+  $('#topbarActions').innerHTML = '<button class="btn btn-primary" id="addUserBtn">+ Add user</button>';
+  $('#addUserBtn').onclick = function () { openUserForm(); };
+
+  var list = DB.users.filter(function (x) {
+    return !f.q || (x.name + ' ' + x.username).toLowerCase().indexOf(f.q.toLowerCase()) !== -1;
+  });
+
+  var html = '<div class="toolbar">' +
+    '<input class="search-input" type="text" placeholder="Search name, username…" id="userSearch" value="' + escapeHtml(f.q) + '">' +
+    '<div class="toolbar-spacer"></div><div class="card-subtitle">' + list.length + ' of ' + DB.users.length + '</div></div>';
+
+  html += '<div class="table-scroll"><table class="data-table"><thead><tr>' +
+    '<th>User ID</th><th>Name</th><th>Username</th><th>Role</th><th>Linked supervisor</th><th>Indents</th><th>Dispatch</th><th>Status</th><th></th>' +
+    '</tr></thead><tbody>';
+  if (!list.length) html += emptyRow(9, 'No users match your search.');
+  else list.forEach(function (x) {
+    var sup = x.linkedSupervisorId ? findSupervisor(x.linkedSupervisorId) : null;
+    html += '<tr>' +
+      '<td>' + x.id + '</td>' +
+      '<td class="primary-cell">' + escapeHtml(x.name) + (x.id === CURRENT_USER.id ? ' <span class="badge badge-neutral">You</span>' : '') + '</td>' +
+      '<td>' + escapeHtml(x.username) + '</td>' +
+      '<td>' + escapeHtml(x.role) + '</td>' +
+      '<td>' + (sup ? escapeHtml(sup.name) : '—') + '</td>' +
+      '<td>' + permToggleBtn(x, 'canCreateIndents') + '</td>' +
+      '<td>' + permToggleBtn(x, 'canLogDispatches') + '</td>' +
+      '<td>' + permToggleBtn(x, 'active', 'Active', 'Inactive') + '</td>' +
+      '<td class="row-actions">' +
+      '<button class="btn btn-sm btn-secondary" data-edit-user="' + x.id + '">Edit</button>' +
+      '<button class="btn btn-sm btn-danger" data-del-user="' + x.id + '">Delete</button>' +
+      '</td></tr>';
+  });
+  html += '</tbody></table></div>';
+  $('#pageContent').innerHTML = html;
+
+  $('#userSearch').oninput = function (e) { f.q = e.target.value; renderUsers(); };
+  $all('[data-edit-user]').forEach(function (b) { b.onclick = function () { openUserForm(b.dataset.editUser); }; });
+  $all('[data-toggle-perm]').forEach(function (b) {
+    b.onclick = function () {
+      var userId = b.dataset.user;
+      var key = b.dataset.togglePerm;
+      var user = findUser(userId);
+      if (!user) return;
+      var newVal = !user[key];
+      if (key !== 'active' && user.role === 'Admin') { alert('Admin accounts always have full access — edit a Supervisor account instead.'); return; }
+      if (key === 'active' && newVal === false) {
+        if (userId === CURRENT_USER.id) { alert("You can't disable the account you're currently logged in as."); return; }
+        var otherActiveAdmins = DB.users.some(function (u) { return u.role === 'Admin' && u.active && u.id !== userId; });
+        if (user.role === 'Admin' && !otherActiveAdmins) { alert('At least one active Admin account must remain.'); return; }
+      }
+      user[key] = newVal;
+      saveDB(); renderUsers();
+    };
+  });
+  $all('[data-del-user]').forEach(function (b) {
+    b.onclick = function () {
+      var id = b.dataset.delUser;
+      var user = findUser(id);
+      if (!user) return;
+      if (id === CURRENT_USER.id) { alert("You can't delete the account you're currently logged in as."); return; }
+      var otherActiveAdmins = DB.users.some(function (u) { return u.role === 'Admin' && u.active && u.id !== id; });
+      if (user.role === 'Admin' && !otherActiveAdmins) { alert('At least one active Admin account must remain.'); return; }
+      if (!confirm('Delete the login for "' + user.name + '"?')) return;
+      DB.users = DB.users.filter(function (x) { return x.id !== id; });
+      saveDB(); toast('User deleted'); renderUsers();
+    };
+  });
+}
+
+function permToggleBtn(user, key, onLabel, offLabel) {
+  if (key !== 'active' && user.role === 'Admin') return '<span class="badge badge-good"><span class="badge-dot"></span>Full</span>';
+  var on = !!user[key];
+  var label = on ? (onLabel || 'On') : (offLabel || 'Off');
+  return '<button type="button" class="btn btn-sm ' + (on ? 'btn-primary' : 'btn-secondary') +
+    '" data-toggle-perm="' + key + '" data-user="' + user.id + '" title="Click to toggle">' + escapeHtml(label) + '</button>';
+}
+
+var SUPERVISOR_TYPE_PRESETS = {
+  full: { canCreateIndents: true, canLogDispatches: true },
+  cfd: { canCreateIndents: true, canLogDispatches: false },
+  production: { canCreateIndents: false, canLogDispatches: true }
+};
+function supervisorTypeFor(u) {
+  if (u.canCreateIndents && u.canLogDispatches) return 'full';
+  if (u.canCreateIndents && !u.canLogDispatches) return 'cfd';
+  if (!u.canCreateIndents && u.canLogDispatches) return 'production';
+  return 'full';
+}
+
+function openUserForm(id) {
+  var isEdit = !!id;
+  var u = isEdit ? findUser(id) : { role: 'Supervisor', active: true, canCreateIndents: true, canLogDispatches: true };
+  var supOptions = DB.supervisors.map(function (s) { return { value: s.id, label: s.name + ' — ' + s.branch }; });
+
+  var body = '<form id="userForm" novalidate><div class="form-grid">' +
+    field('name', 'Full name', 'text', u.name, { required: true, full: true }) +
+    field('username', 'Username', 'text', u.username, { required: true, placeholder: 'used to log in' }) +
+    field('password', 'Password', 'text', u.password, { required: true, placeholder: isEdit ? 'unchanged if you don’t edit this' : '' }) +
+    selectField('role', 'Role', ['Admin', 'Supervisor'], u.role, { required: true, id: 'userRoleSel' }) +
+    selectField('linkedSupervisorId', 'Linked supervisor', supOptions, u.linkedSupervisorId, { id: 'userSupSel', full: true }) +
+    selectField('supervisorType', 'Supervisor type — sets the two toggles below (still adjustable)', [
+      { value: 'full', label: 'Full access — create indents + log dispatches' },
+      { value: 'cfd', label: 'CFD Supervisor — create indents only' },
+      { value: 'production', label: 'Feed Production Supervisor — log dispatches only' }
+    ], supervisorTypeFor(u), { id: 'userSupTypeSel', full: true }) +
+    '<div class="field full"><label><input type="checkbox" id="userCanCreate"' + (u.canCreateIndents !== false ? ' checked' : '') + '> Can create / edit indents</label></div>' +
+    '<div class="field full"><label><input type="checkbox" id="userCanDispatch"' + (u.canLogDispatches !== false ? ' checked' : '') + '> Can log dispatches</label></div>' +
+    '<div class="field full"><label><input type="checkbox" id="userActive"' + (u.active !== false ? ' checked' : '') + '> Active (unchecked disables this login without deleting it)</label></div>' +
+    '</div>' +
+    '<p class="field-hint">Passwords are stored as plain text in this browser’s local storage — this is a convenience gate, not secure credential storage.</p>' +
+    '<div class="form-actions"><button type="button" class="btn btn-secondary" id="userCancel">Cancel</button>' +
+    '<button type="submit" class="btn btn-primary">' + (isEdit ? 'Save changes' : 'Add user') + '</button></div></form>';
+
+  openModal(isEdit ? 'Edit user' : 'Add user', body);
+  $('#userCancel').onclick = closeModal;
+
+  function toggleSupervisorFields() {
+    var show = $('#userRoleSel').value === 'Supervisor';
+    ['#userSupSel', '#userSupTypeSel', '#userCanCreate', '#userCanDispatch'].forEach(function (sel) {
+      var el = $(sel);
+      if (el) el.closest('.field').style.display = show ? '' : 'none';
+    });
+  }
+  toggleSupervisorFields();
+  $('#userRoleSel').onchange = toggleSupervisorFields;
+
+  $('#userSupTypeSel').onchange = function () {
+    var preset = SUPERVISOR_TYPE_PRESETS[$('#userSupTypeSel').value];
+    if (preset) {
+      $('#userCanCreate').checked = preset.canCreateIndents;
+      $('#userCanDispatch').checked = preset.canLogDispatches;
+    }
+  };
+
+  $('#userForm').onsubmit = function (e) {
+    e.preventDefault();
+    if (!requireFields('userForm', ['name', 'username', 'password', 'role'])) return;
+    var data = readForm('userForm');
+    if (data.role === 'Supervisor' && !data.linkedSupervisorId) {
+      alert('Pick which supervisor this login belongs to.');
+      return;
+    }
+    var dup = DB.users.some(function (x) { return x.username.toLowerCase() === data.username.toLowerCase() && x.id !== id; });
+    if (dup) { alert('That username is already taken.'); return; }
+    data.active = $('#userActive').checked;
+    if (data.role === 'Admin') {
+      data.linkedSupervisorId = '';
+      data.canCreateIndents = true;
+      data.canLogDispatches = true;
+    } else {
+      data.canCreateIndents = $('#userCanCreate').checked;
+      data.canLogDispatches = $('#userCanDispatch').checked;
+    }
+
+    if (isEdit) {
+      if (u.role === 'Admin' && data.role !== 'Admin') {
+        var otherActiveAdmins = DB.users.some(function (x) { return x.role === 'Admin' && x.active && x.id !== id; });
+        if (!otherActiveAdmins) { alert('At least one active Admin account must remain.'); return; }
+      }
+      Object.assign(u, data);
+    } else {
+      DB.users.push(Object.assign({ id: nextId('USR', 'user', 3) }, data));
+    }
+    saveDB(); closeModal(); toast(isEdit ? 'User updated' : 'User added'); renderUsers();
+  };
+}
+
+/* ==========================================================================
+   Form field builders
+   ========================================================================== */
+function field(name, label, type, value, opts) {
+  opts = opts || {};
+  var elId = opts.id || ('f_' + name);
+  var attrs = [];
+  if (opts.required) attrs.push('required');
+  if (opts.min !== undefined) attrs.push('min="' + opts.min + '"');
+  if (opts.step) attrs.push('step="' + opts.step + '"');
+  if (opts.placeholder) attrs.push('placeholder="' + escapeHtml(opts.placeholder) + '"');
+  return '<div class="field' + (opts.full ? ' full' : '') + '"><label for="' + elId + '">' + escapeHtml(label) + (opts.required ? ' *' : '') + '</label>' +
+    '<input id="' + elId + '" name="' + name + '" type="' + type + '" value="' + escapeHtml(value === undefined || value === null ? '' : value) + '" ' + attrs.join(' ') + '>' +
+    '<div class="field-error">This field is required.</div></div>';
+}
+function textareaField(name, label, value, opts) {
+  opts = opts || {};
+  var elId = opts.id || ('f_' + name);
+  return '<div class="field' + (opts.full ? ' full' : '') + '"><label for="' + elId + '">' + escapeHtml(label) + (opts.required ? ' *' : '') + '</label>' +
+    '<textarea id="' + elId + '" name="' + name + '"' + (opts.required ? ' required' : '') + '>' + escapeHtml(value || '') + '</textarea>' +
+    '<div class="field-error">This field is required.</div></div>';
+}
+function selectField(name, label, options, selected, opts) {
+  opts = opts || {};
+  var elId = opts.id || ('f_' + name);
+  var optHtml = options.map(function (o) {
+    var v = typeof o === 'string' ? o : o.value;
+    var l = typeof o === 'string' ? o : o.label;
+    return '<option value="' + escapeHtml(v) + '"' + (v === selected ? ' selected' : '') + '>' + escapeHtml(l) + '</option>';
+  }).join('');
+  return '<div class="field' + (opts.full ? ' full' : '') + '"><label for="' + elId + '">' + escapeHtml(label) + (opts.required ? ' *' : '') + '</label>' +
+    '<select id="' + elId + '" name="' + name + '"' + (opts.required ? ' required' : '') + '><option value="">Select…</option>' + optHtml + '</select>' +
+    '<div class="field-error">Please make a selection.</div></div>';
+}
+function readForm(formId) {
+  var form = document.getElementById(formId);
+  var data = {};
+  $all('input, select, textarea', form).forEach(function (el) { if (el.name) data[el.name] = el.value.trim ? el.value.trim() : el.value; });
+  return data;
+}
+function requireFields(formId, names) {
+  var form = document.getElementById(formId);
+  var ok = true;
+  names.forEach(function (n) {
+    var el = form.querySelector('[name="' + n + '"]');
+    if (!el) return;
+    var wrap = el.closest('.field');
+    var valid = el.value !== '' && el.value !== null;
+    if (wrap) wrap.classList.toggle('invalid', !valid);
+    if (!valid) ok = false;
+  });
+  return ok;
+}
+
+/* ==========================================================================
+   Modal plumbing
+   ========================================================================== */
+function openModal(title, bodyHtml) {
+  $('#modalTitle').textContent = title;
+  $('#modalBody').innerHTML = bodyHtml;
+  $('#modalOverlay').classList.add('open');
+}
+function closeModal() { $('#modalOverlay').classList.remove('open'); }
+
+/* ==========================================================================
+   Theme
+   ========================================================================== */
+function applyTheme(theme) {
+  if (theme) document.documentElement.setAttribute('data-theme', theme);
+  else document.documentElement.removeAttribute('data-theme');
+  var isDark = theme === 'dark' || (!theme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  $('#themeIcon').textContent = isDark ? '☀' : '🌙';
+  $('#themeLabel').textContent = isDark ? 'Light mode' : 'Dark mode';
+}
+function initTheme() {
+  var saved = safeStorage.getItem(THEME_KEY);
+  applyTheme(saved || '');
+  $('#themeToggle').onclick = function () {
+    var current = document.documentElement.getAttribute('data-theme');
+    var isDarkNow = current === 'dark' || (!current && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = isDarkNow ? 'light' : 'dark';
+    safeStorage.setItem(THEME_KEY, next);
+    applyTheme(next);
+  };
+}
+
+/* ==========================================================================
+   Data & backup menu
+   ========================================================================== */
+function initDataMenu() {
+  $('#dataMenuBtn').onclick = function () { $('#dataModalOverlay').classList.add('open'); };
+  $('#dataModalClose').onclick = function () { $('#dataModalOverlay').classList.remove('open'); };
+  $('#dataModalOverlay').addEventListener('click', function (e) { if (e.target === $('#dataModalOverlay')) $('#dataModalOverlay').classList.remove('open'); });
+
+  $('#exportBtn').onclick = function () {
+    downloadTextFile(JSON.stringify(DB, null, 2), 'feed-plan-backup-' + todayISO() + '.json', 'application/json');
+    toast('Backup downloaded');
+  };
+
+  $('#importInput').onchange = function (e) {
+    var file = e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      try {
+        var parsed = JSON.parse(reader.result);
+        if (!parsed.farmers || !parsed.indents || !parsed.branches || !parsed.users) throw new Error('bad shape');
+        DB = parsed;
+        saveDB();
+        var stillValid = findUser(CURRENT_USER.id);
+        if (!stillValid || !stillValid.active) {
+          toast('Data imported — your login no longer exists in this data, please log in again');
+          $('#dataModalOverlay').classList.remove('open');
+          doLogout();
+          return;
+        }
+        CURRENT_USER = stillValid;
+        toast('Data imported');
+        $('#dataModalOverlay').classList.remove('open');
+        applyRoleVisibility();
+        navigate();
+      } catch (err) {
+        alert('This file does not look like a valid Feed Plan backup (expected farmers, indents, branches and users).');
+      }
+      $('#importInput').value = '';
+    };
+    reader.readAsText(file);
+  };
+
+  $('#reseedBtn').onclick = function () {
+    if (!confirm('Replace current data with the original sample data set? This cannot be undone.')) return;
+    DB = buildSeedData();
+    saveDB();
+    CURRENT_USER = findUser(CURRENT_USER.id) || DB.users[0];
+    toast('Sample data reloaded');
+    $('#dataModalOverlay').classList.remove('open');
+    applyRoleVisibility();
+    navigate();
+  };
+
+  $('#wipeBtn').onclick = function () {
+    if (!confirm('Erase all farmers, supervisors, plants, indents, dispatches and SMS logs? Branches and user logins are kept so you don\'t get locked out. This cannot be undone.')) return;
+    DB.farmers = []; DB.supervisors = []; DB.mills = []; DB.indents = []; DB.dispatches = []; DB.smsLogs = [];
+    DB.counters.farmer = 0; DB.counters.supervisor = 0; DB.counters.mill = 0; DB.counters.indent = 0; DB.counters.dispatch = 0; DB.counters.sms = 0;
+    saveDB();
+    toast('Business data erased');
+    $('#dataModalOverlay').classList.remove('open');
+    navigate();
+  };
+}
+
+/* ==========================================================================
+   Login / session
+   ========================================================================== */
+function showLogin(message) {
+  $('#appShell').style.display = 'none';
+  $('#loginScreen').style.display = 'flex';
+  $('#loginError').textContent = message || '';
+  var form = $('#loginForm');
+  if (form) form.reset();
+}
+function showApp() {
+  $('#loginScreen').style.display = 'none';
+  $('#appShell').style.display = 'flex';
+  $('#userChipName').textContent = CURRENT_USER.name;
+  var sup = CURRENT_USER.linkedSupervisorId ? findSupervisor(CURRENT_USER.linkedSupervisorId) : null;
+  $('#userChipRole').textContent = CURRENT_USER.role + (sup ? ' · ' + sup.branch : '');
+  applyRoleVisibility();
+}
+function doLogout() {
+  logout();
+  showLogin('');
+}
+function initAuth() {
+  $('#loginForm').onsubmit = function (e) {
+    e.preventDefault();
+    var username = $('#loginUsername').value;
+    var password = $('#loginPassword').value;
+    if (login(username, password)) {
+      showApp();
+      navigate();
+    } else {
+      $('#loginError').textContent = 'Incorrect username or password.';
+    }
+  };
+  $('#logoutBtn').onclick = function () {
+    if (!confirm('Log out?')) return;
+    doLogout();
+  };
+}
+
+/* ==========================================================================
+   Init
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', function () {
+  loadDB();
+  initTheme();
+  initDataMenu();
+  initAuth();
+
+  $('#modalClose').onclick = closeModal;
+  $('#modalOverlay').addEventListener('click', function (e) { if (e.target === $('#modalOverlay')) closeModal(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeModal(); $('#dataModalOverlay').classList.remove('open'); }
+  });
+
+  $('#mobileNavBtn').onclick = function () { $('#sidebar').classList.toggle('open'); };
+
+  if (restoreSession()) {
+    showApp();
+    navigate();
+  } else {
+    showLogin();
+  }
+});
+
+</script>
+</body>
+</html>
